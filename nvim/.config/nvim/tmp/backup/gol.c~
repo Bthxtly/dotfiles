@@ -1,0 +1,99 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+
+#define ALIVE 1
+#define DEAD  0
+#define WIDTH  20
+#define HEIGHT 20
+#define DELAY  0
+
+#define GET(height, width) (gc[height][width])
+#define PUT(height, width, value) (gc[height][width] = value)
+#define PUX(height, width, value) (gn[height][width] = value)
+#define SWAP(type, a, b) do{type tmp = a; a = b; b = tmp;}while(0);
+
+typedef char (*p_grip)[WIDTH + 2];
+typedef char grip[HEIGHT + 2][WIDTH + 2];
+
+int cnt = 0;
+grip g1, g2;
+p_grip gc = g1, gn = g2;
+
+int main(){
+    void initialize(void);
+    void update(void);
+    void draw(void);
+    
+    initialize();
+
+    do{
+        draw();
+        update();
+        SWAP(p_grip, gc, gn);
+        sleep(DELAY);
+    }while(cnt);
+
+    printf("All cells are dead!\n");
+
+    return 0;
+}
+
+void initialize(){
+    /*
+     * input two numbers x and y, assign grip[x][y] as ALIVE
+     * 0 0 to end
+     */
+    int x, y;
+    do{
+        scanf("%d %d", &x, &y);
+        if(0<x && x<=HEIGHT && 0<y && y<=WIDTH)
+            PUT(x, y, ALIVE);
+        else
+            continue;
+    }while(x || y);
+}
+
+void draw(){
+    /*
+     * draw the screen
+     */
+    system("clear");
+    for(int h = 0; h <= HEIGHT + 1; h++){
+       for(int w = 0; w <= WIDTH + 1; w++)
+          printf(GET(h, w)?"□ ":"■ "); 
+       /* printf("===================="); */
+       /* for(int w = 1; w <= WIDTH; w++) */
+       /*    printf(GEX(h, w)?"□ ":"■ "); */ 
+       putchar('\n');
+    }
+}
+
+void update(){
+    int _neighbors(int h, int w);
+    cnt = 0;
+    for(int h = 1; h <= HEIGHT; h++)
+        for(int w = 1; w <= WIDTH; w++){
+            int c = GET(h, w);
+            cnt += c;
+            int n = _neighbors(h, w);
+            /*
+             * if an alive cell has 2 neighbors or any cell
+             * has 3 neighbors, the cell lives, else die
+             */
+            /* printf("The cell at [%2d, %2d] has %d neighbors, and is %d.\n", h, w, n, c); */
+            if(n == 3 || (n == 2 && c == ALIVE))
+                PUX(h, w, ALIVE);
+            else
+                PUX(h, w, DEAD);
+        }
+}
+
+int _neighbors(int h, int w){
+    int n = 0;
+    for(int i = -1; i <= 1; i++)
+        for(int j = -1; j <= 1; j++)
+            if(i || j)
+                n += GET(h + i, w + j);
+    return n;
+}

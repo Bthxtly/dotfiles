@@ -1,0 +1,7 @@
+print("{:.2e}".format((lambda x: (lambda rec, x: rec(rec, x))(lambda rec, x: 1 if x == 1 else rec(rec, x - 1) + (lambda b: (lambda frac, b: frac(frac, b))(lambda frac, b: b*frac(frac, b-1) if b > 0 else 1,b))(x), x))(30)))
+
+# sum = 0
+# frac = lambda x: 1 if x == 1 else x * frac(x - 1)
+# for i in range(1, 31):
+#     sum += frac(i)
+# print(sum)

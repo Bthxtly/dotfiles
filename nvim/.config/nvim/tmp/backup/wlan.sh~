@@ -1,0 +1,2 @@
+sudo wpa_supplicant -c /root/wlan.connect -i wlo1 > /dev/null&
+sudo dhcpcd &

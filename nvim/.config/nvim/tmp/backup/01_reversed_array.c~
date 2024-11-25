@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    int arr[20] = {}, *p = arr;
+    while(scanf("%d", p++) != EOF) ;
+    while(p-- != arr) {
+        printf("%d ", *p);
+    }
+    printf("%d\n", *p);
+    return 0;
+}

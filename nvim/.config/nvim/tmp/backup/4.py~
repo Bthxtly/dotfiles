@@ -1,0 +1,7 @@
+n = int(input("Enter the number of people and bricks: "))
+
+for men in range(n + 1):
+    for women in range(n - men + 1):
+        children = n - men - women
+        if 3 * men + 2 * women + children // 2 == n and children % 2 == 0:
+            print(f"men = {men}, women = {women}, child = {children}")

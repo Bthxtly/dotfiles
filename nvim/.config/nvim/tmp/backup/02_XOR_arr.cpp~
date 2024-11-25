@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int contain(int num, int* begin, int* end) {
+    for(int *p = begin; p <= end; p++)
+        if (num == *p) return 1;
+    return 0;
+}
+
+int greater(const void* a, const void* b) {
+    return *(int*)a > *(int*)b;
+}
+
+void printArray(int arr[], int size) {
+    printf("[");
+    for (int i = 0; i < size; i++) {
+        printf("%d", arr[i]);
+        if (i < size - 1) {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}
+
+void printArrayOG(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d", arr[i]);
+        if (i < size - 1) {
+            printf(" ");
+        }
+    }
+}
+
+void reverseArray(int arr[], int size) {
+    int tmp;
+    for(int i = 0; i < size / 2 + 1; ++i) {
+        tmp = arr[i];
+        arr[i] = arr[size - i - 1];
+        arr[size - i - 1] = tmp;
+    }
+}
+
+int main(int argc, char *argv[]) {
+    int arr[40], *p = arr;
+    while(scanf("%d", p++) != EOF) {
+        if(contain(*(p - 1), arr, p - 2))
+            p--;
+    }
+    p--;
+    qsort(arr, p - arr, sizeof(int), &greater);
+    reverseArray(arr,  p - arr);
+    printArrayOG(arr,  p - arr);
+    return 0;
+}

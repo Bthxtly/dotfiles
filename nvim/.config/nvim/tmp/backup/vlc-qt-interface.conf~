@@ -1,0 +1,41 @@
+[General]
+filedialog-path=@Variant(\0\0\0\x11\0\0\0Jfile:///home/bthxtly/Videos/LAmicaGenialeS2/L'Amica%20Geniale%20S02E01.mkv)
+geometry=@ByteArray(\x1\xd9\x42\0\x1\0\0\0\0\n\0\x65\0\x44\0P\0-\0\x31@\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x6?\0\0\x3\x83\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x3\f\0\0\x1\x9f\x2\0)
+
+[FullScreen]
+pos=@Point(0 0)
+screen=@Rect(0 0 0 0)
+wide=false
+
+[MainWindow]
+ShowRemainingTime=false
+adv-controls=0
+artist-albums-width-factor=4
+bgSize=@Size(1576 775)
+color-scheme-index=2
+grid-view=true
+grouping=0
+interface-scale=1
+pl-dock-status=true
+player-playlist-width-factor=4
+playlist-visible=false
+playlist-width-factor=4
+playlistSize=@Size(-1 -1)
+status-bar-visible=false
+
+[Preferences]
+geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\x1w\0\0\0\x64\0\0\x4\xc8\0\0\x3\x1f\0\0\x1w\0\0\0\x64\0\0\x4\xc8\0\0\x3\x1f\0\0\0\0\x2\0\0\0\x6@\0\0\x1w\0\0\0\x64\0\0\x4\xc8\0\0\x3\x1f)
+
+[RecentsMRL]
+list=file:///home/bthxtly/Videos/LAmicaGenialeS2/L'Amica%20Geniale%20S02E01.mkv, file:///home/bthxtly/Videos/LAmicaGenialeS2/L%27Amica%20Geniale%20S02E01.mkv, directory:///home/bthxtly/Videos/LAmicaGenialeS2, file:///home/bthxtly/Videos/Archived/LAmicaGenialeS1/My.Brilliant.Friend.S01E01.The.Dolls.ITALIAN.SUBBED.720p.WEBRip.2CH.x265.HEVC-PSA.mkv, file:///home/bthxtly/Videos/Archived/LAmicaGenialeS1/My.Brilliant.Friend.S01E02.The.Money.ITALIAN.SUBBED.720p.WEBRip.2CH.x265.HEVC-PSA.mkv
+times=0, 0, 0, 0, 2053119
+
+[sortCriteria]
+mc\discover=
+mc\network\browse=
+player=
+
+[sortOrder]
+mc\discover=1
+mc\network\browse=1
+player=1

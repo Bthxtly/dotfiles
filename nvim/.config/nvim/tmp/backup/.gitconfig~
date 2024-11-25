@@ -1,0 +1,3 @@
+[credential]
+	helper = pass
+	credentialStore = secret

@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+double price(double x) {
+    static double sale = 0;
+    sale += x;
+    double commission = 0;
+    if (sale < 5000) {
+        commission = sale * 0.01;
+    } else if (sale >= 5000 && sale < 10000) {
+        commission = sale * 0.05;
+    } else {
+        commission = sale * 0.10;
+    }
+    return commission;
+}
+
+int main() {
+    double buy, total;
+    
+    scanf("%lf", &buy); // 输入上半年销售量
+    total = price(buy);  // 计算上半年提成
+    printf("sum_s=%.2f\n", total);  
+    
+    scanf("%lf", &buy); // 输入下半年销售量
+    total = price(buy);  // 计算下半年提成
+    printf("sum_s=%.2f\n", total);
+    
+    return 0;
+}
+

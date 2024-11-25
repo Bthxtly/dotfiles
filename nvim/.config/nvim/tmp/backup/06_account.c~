@@ -1,0 +1,36 @@
+#include<stdio.h>
+
+double balance;
+void income(double cash);
+void expend(double cash);
+
+int main(void)
+{
+    int choice;
+    double cash;
+
+    cash = 0;
+    scanf("%d", &choice);
+    while (choice != 0){
+        if (choice == 1 || choice == 2) {
+            scanf("%lf", &cash);
+            if (choice == 1){
+                income(cash);
+            }else{
+                expend(cash);
+            }
+            printf("balance:%.2f\n", balance);
+        }
+        scanf("%d", &choice);
+     }
+
+     return 0;
+}
+
+void income(double cash) {
+    balance += cash;
+}
+
+void expend(double cash) {
+    balance -= cash;
+}

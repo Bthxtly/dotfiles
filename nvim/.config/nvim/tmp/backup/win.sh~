@@ -1,0 +1,4 @@
+sudo systemctl enable --now libvirtd
+sudo systemctl start libvirtd
+sudo systemctl status libvirtd
+virt-manager

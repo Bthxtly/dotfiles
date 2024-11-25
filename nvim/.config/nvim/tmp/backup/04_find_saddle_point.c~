@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int max_in_three(int a, int b, int c) {
+    return a > b && a > c;
+}
+
+int min_in_three(int a, int b, int c) {
+    return a < b && a < c;
+}
+
+int findSaddlePoint(int arr[9]) {
+    for(int i = 0; i < 9; ++i) {
+        if(max_in_three(arr[i / 3 * 3 + i % 3], arr[i / 3 * 3 + (i + 1) % 3], arr[i / 3 * 3 + (i + 2) % 3]))
+            if(min_in_three(arr[i], arr[(i + 3) % 9], arr[(i + 6) % 9])){
+                printf("%d\n", i);
+                return i / 3 * 10 + i % 3;
+            }
+    }
+    return -1;
+}
+
+int main(int argc, char *argv[]) {
+    int arr[9];
+    for(int i = 0; i < 9; ++i) {
+        scanf("%d", arr + i);
+    }
+    int find = findSaddlePoint(arr);
+    printf("%d\n", find);
+    if(find == -1)
+        printf("There is no saddle point\n");
+    else
+        printf("Saddle point:a[%d][%d]=%d\n", find / 10, find % 10,
+                                                    arr[find / 10 + find % 10]);
+    return 0;
+}

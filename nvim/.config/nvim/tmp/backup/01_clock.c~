@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <math.h>
+
+void TimeOutput(int hour, int minute, double second);
+void ToHms(int *hour, int *minute, double *second, double total);
+
+int main()
+{
+    int h, m;
+    double s, t;
+    scanf("%lg", &t);
+    ToHms(&h, &m, &s, t);
+    TimeOutput(h, m, s);
+    return 0;
+}
+
+void TimeOutput(int hour, int minute, double second)
+{
+    /* output the time */
+}
+
+void ToHms(int *hour, int *minute, double *second, double total) {
+    int int_second = (int) *total;
+    *hour = (int_second / 3600);
+    *minute = (int_second / 60 % 60);
+    *second = (total - *hour * 3600 - *minute * 60);
+}

@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+#define Sqr(a) sqrt(a)
+
+int main()
+{
+    double a, b;
+    scanf("%lg", &a);
+    b = Sqr(a);
+    printf("%g\n", b);
+    return 0;
+}

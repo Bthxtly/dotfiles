@@ -1,0 +1,10 @@
+epsilon = float(input())
+i = 0
+pi = 0
+while True:
+    x = 1 / (2 * i + 1) * (-1) ** i
+    pi += 4 * x
+    if abs(x) < epsilon:
+        break
+    i += 1
+print("Pi = %.4f" % pi)

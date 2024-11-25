@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void sort(int *p, int (*compare)(int a, int b), int N);
+
+int Ascending(int a, int b);
+int Descending(int a, int b);
+int bit0_Asc(int a, int b);
+int bit1_Des(int a, int b);
+
+int main() {
+    int n=10, k;
+    int *s, *p;
+    int (*fun)(int, int);
+
+    scanf("%d", &n);
+    p=(int*)malloc(n*sizeof(int));
+    for(s=p; s<p+n; s++)
+        scanf("%d", s);
+
+    scanf("%d", &k);
+    switch(k) {
+        case 1:fun=Ascending; break;
+        case 2:fun=Descending; break;
+        case 3:fun=bit0_Asc; break;
+        case 4:fun=bit1_Des; break;
+    }
+    sort(p, fun, n);
+
+    for(s=p; s<p+n-1; s++)
+        printf("%d ", *s);
+    printf("%d\n", *s);
+
+    return 0;
+}
+
+int  Ascending(int a, int b) {
+    return a > b;
+}
+
+int bit0_Asc(int a, int b) {
+    return a % 10 > b % 10;
+}
+
+int Descending(int a, int b) {
+    return a < b;
+}
+
+int bit1_Des(int a, int b) {
+    return a / 10 % 10 < b / 10 % 10;
+}
+
+void sort(int *p, int (*compare)(int a, int b), int N) {
+    TODO
+}

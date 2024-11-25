@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct process {
+    int pid;
+    int ppriority;
+    int pstate;
+    int pcpu;
+    char *pName;
+    char *pdescription;
+} Processes[4] = {
+    {101, 10, 1, 3, (char*)"chrome.exe", (char*)"google chrome"},
+    {102, 7, 1, 1, (char*)"360.exe", (char*)"360 safe protect"},
+    {103, 5, 1, 4, (char*)"QQ.exe", (char*)"tencet QQ"},
+    {104, 3, 1, 2, (char*)"CPPIDE.exe", (char*)"CFree 5.0"}
+};
+
+int cmp(const void* p1, const void* p2) {
+    /* the priority of p1 greater than that of p2 */
+    return ((struct process*) p1)->ppriority > ((struct process*) p2)->ppriority;
+}
+
+struct process** sorted(struct process Processes[], int size) {
+    /* create an array, whose elements point to Processes, sort the array by priority and return the array */
+    struct process **p_array = (struct process**) malloc(sizeof(struct process*) * size);
+    for(int i = 0; i < size; ++i) p_array[i] = &Processes[i];
+    qsort(p_array, size, sizeof(struct process*), cmp);
+    return p_array;
+}
+
+void run(struct process Processes[], int size) {
+    struct process **p_array = sorted(Processes, size);
+
+    int cnt = 1;
+    for(struct process *p = p_array[0]; p - p_array[0] < size; p++) {
+        p->pstate++;
+        while (p->pcpu--)
+            printf("%-2d:%-12s%-5d%-3d%-3d%-3d%s\n", cnt++, p->pName, p->pid, p->ppriority, p->pstate, p->pcpu, p->pdescription);
+        printf("%-2d:%-12s%-5d%-3d%-3d%-3d%s\n", cnt - 1, p->pName, p->pid, p->ppriority, ++p->pstate, ++p->pcpu, p->pdescription);
+    }
+}
+
+int main(int argc, char *argv[]) {
+    run(Processes, 4);
+    return 0;
+}

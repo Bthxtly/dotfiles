@@ -1,0 +1,21 @@
+#include<stdio.h>
+
+void printNumber(int m) ;
+
+int main()
+{
+    int n,m;
+    scanf("%d %d",&n,&m);
+    for (int i = 0; i < n; ++i) {
+        printNumber(m);//第一次调用
+    }
+
+    return 0;
+}
+
+void printNumber(int m) {
+    static int begin = 1;
+    for(int i = 0; i < m; ++i) {
+        printf("%d ", begin++);
+    }
+}

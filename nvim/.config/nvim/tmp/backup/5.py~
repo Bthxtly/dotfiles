@@ -1,0 +1,23 @@
+num, cnt = map(int, input().split())
+n = 0
+while True:
+    ans = int(input())
+    n += 1
+    if ans == num and n == 1:
+        print("Bingo")
+        break
+    if ans == num and (n == 2 or n == 3):
+        print("Lucky You!")
+        break
+    if ans == num:
+        print("Good Guess!")
+        break
+    if n == cnt or ans < 0:
+        print("Game Over")
+        break
+    if ans > num:
+        print("Too big")
+        continue
+    if ans < num:
+        print("Too small")
+        continue

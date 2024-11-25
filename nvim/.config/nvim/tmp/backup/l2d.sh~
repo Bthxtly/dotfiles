@@ -1,0 +1,5 @@
+export light_or_dark=dark
+sed -i '8 s/light/dark/' ~/dotfiles/nvim/.config/nvim/init.vim
+sed -i '2 s/light/dark/' ~/dotfiles/kitty/.config/kitty/kitty.conf
+pkill -USR1 -f /usr/bin/kitty
+# kill -SIGUSR1 $(pgrep kitty)
