@@ -68,27 +68,67 @@ packadd! matchit
 "}}}
 "=========================================================================
 " Sessions {{{
-fu! SaveSess()
-  execute 'mksession! ' . getcwd() . '/.session.vim'
+" Auto-save and auto-load session files
+
+" Function to save the session
+function! SaveSession()
+  " Check if a buffer is associated with a file
+  if expand('%') != '' && !&modifiable
+    return
+  endif
+
+  " Get the current file's directory and filename
+  let l:filename = expand('%:p')
+  let l:session_file = expand('%:p:h') . '/.' . expand('%:t') . '.session.vim'
+
+  " Save the session to the session file
+  execute 'mksession! ' . fnameescape(l:session_file)
 endfunction
 
-fu! RestoreSess()
-  if filereadable(getcwd() . '/.session.vim')
-    execute 'so ' . getcwd() . '/.session.vim'
-    if bufexists(1)
-      for l in range(1, bufnr('$'))
-        if bufwinnr(l) == -1
-          exec 'sbuffer ' . l
-        endif
-      endfor
-    endif
+" Function to load the session
+function! LoadSession()
+  " Check if a buffer is associated with a file
+  if expand('%') == ''
+    return
+  endif
+
+  " Get the current file's directory and filename
+  let l:filename = expand('%:p')
+  let l:session_file = expand('%:p:h') . '/.' . expand('%:t') . '.session.vim'
+
+  " Check if the session file exists
+  if filereadable(l:session_file)
+    execute 'source ' . fnameescape(l:session_file)
   endif
 endfunction
 
-" autocmd VimLeave * call SaveSess()
-" autocmd VimEnter * nested call RestoreSess()
+" Auto-load the session when opening a file
+" autocmd BufWritePost * call SaveSession()
+
+" Auto-save the session when leaving a file
+" autocmd BufReadPost * call LoadSession()
 
 set sessionoptions-=options  " Don't save options
+"
+" fu! SaveSess()
+"   execute 'mksession! ' . getcwd() . '/.session.vim'
+" endfunction
+
+" fu! RestoreSess()
+"   if filereadable(getcwd() . '/.session.vim')
+"     execute 'so ' . getcwd() . '/.session.vim'
+"     if bufexists(1)
+"       for l in range(1, bufnr('$'))
+"         if bufwinnr(l) == -1
+"           exec 'sbuffer ' . l
+"         endif
+"       endfor
+"     endif
+"   endif
+" endfunction
+
+" autocmd VimLeave * call SaveSess()
+" autocmd VimEnter * nested call RestoreSess()
 " }}}
 "=========================================================================
 " windows manager {{{
@@ -117,6 +157,8 @@ nnoremap sv <C-w>t<C-w>H
 " Rotate screens
 nnoremap srh <C-w>b<C-w>K
 nnoremap srv <C-w>b<C-w>H
+" Switch two screens
+nnoremap sx <C-w><C-x>
 "}}}
 "=========================================================================
 " other maps {{{
@@ -190,9 +232,10 @@ endfunc
 "=========================================================================
 " neovide {{{
 if exists("g:neovide")
-    set guifont=DejaVuSansM\ Nerd\ Font:h12
+    set guifont=ComicShannsMono\ Nerd\ Font:h13
     let g:nerdtree_tabs_open_on_gui_startup=0
     let g:nerdtree_tabs_open_on_new_tab=0
+    nnoremap <C-S-V> "+p
 endif
 "}}}
 "=========================================================================
@@ -202,17 +245,13 @@ let g:gruvbox_contrast_light='soft'
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_italic=1
 let g:gruvbox_bold=1
-" let g:indentLine_setColors = 0
+let g:indentLine_setColors = 0
+let g:indentLine_defaultGroup = 'SpecialKey' 
 " let g:gruvbox_improved_strings=1
 colorscheme gruvbox
 
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-if (empty($TMUX) && getenv('TERM_PROGRAM') != 'Apple_Terminal')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
+"Use 24-bit (true-color) mode in Vim/Neovim
+set termguicolors
 
 source ~/.config/nvim/current_theme.vim
 syntax on
@@ -256,20 +295,20 @@ set concealcursor=nc
 " let maplocalleader = ","
 "}}}
 "=========================================================================
-" coc settings {{{
-" Assign the path of node
-" let g:coc_node_path='/home/bthxtly/.nvm/versions/node/v20.16.0/bin/node'
+"" coc settings {{{
+"" Assign the path of node
+"" let g:coc_node_path='/home/bthxtly/.nvm/versions/node/v20.16.0/bin/node'
 
-" Make <C-l> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"" Make <C-l> to accept selected completion item or notify coc.nvim to format
+"" <C-g>u breaks current undo, please make your own choice
+"inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-"}}}
+"function! CheckBackspace() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
+""}}}
 "=========================================================================
 " ultiSnips {{{
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -327,7 +366,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 " self describe
 Plug 'tpope/vim-repeat'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'altermo/ultimate-autopair.nvim'
 Plug 'easymotion/vim-easymotion'
 " Plug 'mbbill/undotree'
 
@@ -337,18 +377,11 @@ Plug 'liuchengxu/vista.vim'
 " multi cursor
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-" Gruvbox
-Plug 'morhetz/gruvbox'
-
 " comment codes
 Plug 'tpope/vim-commentary'
 
-" colorful parantheses
-" Plug 'luochen1990/rainbow'
-Plug 'HiPhish/rainbow-delimiters.nvim'
-
-" syntax chec
-Plug 'dense-analysis/ale'
+" syntax check
+" Plug 'dense-analysis/ale'
 
 " deal with parantheses etc.
 Plug 'tpope/vim-surround'
@@ -364,7 +397,14 @@ Plug 'thalesmello/vim-textobj-multiline-str'
 Plug 'jeetsukumaran/vim-pythonsense'
 
 " auto complete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -377,14 +417,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 Plug 'nvim-tree/nvim-web-devicons'
 
-" more syntax highlight
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
 " vim status bar
 Plug 'vim-airline/vim-airline'
 
 " align
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
 " show git information in doc
@@ -407,24 +443,38 @@ Plug 'vimwiki/vimwiki'
 " " copilot
 " Plug 'github/copilot.vim'
 
-" vim syntax highlight
-Plug 'ap/vim-css-color'
-Plug 'Fymyte/rasi.vim'
-Plug 'kmonad/kmonad-vim'
-Plug 'Bthxtly/vim-kitty'
-Plug 'Bthxtly/hyprland-vim-syntax'
-
 " Just for fun
 Plug 'seandewar/killersheep.nvim'
 
 " time the start time
 Plug 'dstein64/vim-startuptime'
 
+" debugger
+Plug 'puremourning/vimspector'
+
 " move function arguments
 Plug 'AndrewRadev/sideways.vim'
 
 " Perl module / CLI script 'ack'
 " Plug 'mileszs/ack.vim'
+
+" Gruvbox
+Plug 'gruvbox-community/gruvbox'
+
+" colorful parantheses
+" Plug 'luochen1990/rainbow'
+Plug 'HiPhish/rainbow-delimiters.nvim'
+
+" vim syntax highlight
+Plug 'ap/vim-css-color'
+Plug 'Fymyte/rasi.vim'
+Plug 'kmonad/kmonad-vim'
+Plug 'Bthxtly/vim-kitty'
+Plug 'Bthxtly/hyprland-vim-syntax'
+Plug 'Yggdroot/indentLine'
+
+" more syntax highlight
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 packadd minpac
@@ -441,48 +491,118 @@ lua require"neoclip":setup()
 "=========================================================================
 " lua {{{
 lua << EOF
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-  -- ensure_installed = { "c", "cpp", "vim", "markdown", "markdown_inline" },
-  ensure_installed = all,
+--------------------------------------------------------------------------
+    -- treesitter settings {{{
+    require'nvim-treesitter.configs'.setup {
+        -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+        -- ensure_installed = { "c", "cpp", "vim", "markdown", "markdown_inline" },
+        ensure_installed = all,
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+        -- Install parsers synchronously (only applied to `ensure_installed`)
+        sync_install = false,
 
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
+        -- Automatically install missing parsers when entering buffer
+        -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+        auto_install = false,
 
-  -- List of parsers to ignore installing (or "all")
-  -- ignore_install = { "javascript" },
+        -- List of parsers to ignore installing (or "all")
+        -- ignore_install = { "javascript" },
 
-  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+        ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+        -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
-  highlight = {
-    enable = true,
+        highlight = {
+            enable = true,
 
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    -- disable = { "c", "rust" },
-    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-    disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
+            -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+            -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+            -- the name of the parser)
+            -- list of language that will be disabled
+            -- disable = { "c", "rust" },
+            -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+            disable = function(lang, buf)
+            local max_filesize = 100 * 1024 -- 100 KB
+            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            if ok and stats and stats.size > max_filesize then
+                return true
+                end
+                end,
 
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
+                -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+                -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+                -- Using this option may slow down your editor, and you may see some duplicate highlights.
+                -- Instead of true it can also be a list of languages
+                additional_vim_regex_highlighting = false,
+        },
+    }
+    -- }}}
+--------------------------------------------------------------------------
+    -- cmp settings {{{
+    -- Set up nvim-cmp.
+    local cmp = require'cmp'
+
+    cmp.setup({
+    snippet = {
+        expand = function(args)
+        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        end,
+    },
+    window = {
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'ultisnips' }, -- For ultisnips users.
+    }, {
+        { name = 'buffer' },
+    })
+    })
+
+    -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
+    -- Set configuration for specific filetype.
+    --[[ cmp.setup.filetype('gitcommit', {
+        sources = cmp.config.sources({
+        { name = 'git' },
+        }, {
+            { name = 'buffer' },
+        })
+        })
+    require("cmp_git").setup() ]]-- 
+
+    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+            { name = 'buffer' }
+        }
+        })
+
+    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+        { name = 'path' }
+        }, {
+            { name = 'cmdline' }
+        }),
+        matching = { disallow_symbol_nonprefix_matching = false }
+    })
+
+    -- Set up lspconfig.
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    require('lspconfig').pyright.setup {
+        capabilities = capabilities
+    }
+    require'lspconfig'.clangd.setup{}
+    -- }}}
 EOF
 "}}}
 "=========================================================================
