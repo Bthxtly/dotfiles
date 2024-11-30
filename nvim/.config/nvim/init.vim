@@ -187,6 +187,7 @@ tnoremap <C-H> <C-\><C-N>
 nnoremap <LEADER>, :%s#,\(\S\)#, \1#g<CR>
 " shortcuts
 nnoremap <silent><F3> :call CompileRunGcc()<CR>
+nnoremap <silent><F8> :UndotreeToggle<CR>
 nnoremap <silent><F9> :NERDTreeToggle<CR>
 nnoremap <silent><F10> :Vista!!<CR>
 
@@ -235,6 +236,8 @@ if exists("g:neovide")
     set guifont=ComicShannsMono\ Nerd\ Font:h13
     let g:nerdtree_tabs_open_on_gui_startup=0
     let g:nerdtree_tabs_open_on_new_tab=0
+    let g:neovide_cursor_vfx_mode = "sonicboom"
+    let g:neovide_refresh_rate = 120
     nnoremap <C-S-V> "+p
 endif
 "}}}
@@ -295,21 +298,6 @@ set concealcursor=nc
 " let maplocalleader = ","
 "}}}
 "=========================================================================
-"" coc settings {{{
-"" Assign the path of node
-"" let g:coc_node_path='/home/bthxtly/.nvm/versions/node/v20.16.0/bin/node'
-
-"" Make <C-l> to accept selected completion item or notify coc.nvim to format
-"" <C-g>u breaks current undo, please make your own choice
-"inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
-"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-"function! CheckBackspace() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-""}}}
-"=========================================================================
 " ultiSnips {{{
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -333,6 +321,14 @@ function! Multiple_cursors_after()
   call AutoPairsToggle()
 endfun
 "}}}
+"=========================================================================
+" sideway {{{
+" add 'argument' text object
+omap aa <Plug>SidewaysArgumentTextobjA
+xmap aa <Plug>SidewaysArgumentTextobjA
+omap ia <Plug>SidewaysArgumentTextobjI
+xmap ia <Plug>SidewaysArgumentTextobjI
+" }}}
 "=========================================================================
 " tab settings {{{
 nnoremap <silent> TT :tabnew<cr>
@@ -366,10 +362,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 " self describe
 Plug 'tpope/vim-repeat'
-" Plug 'jiangmiao/auto-pairs'
-Plug 'altermo/ultimate-autopair.nvim'
 Plug 'easymotion/vim-easymotion'
-" Plug 'mbbill/undotree'
+Plug 'mbbill/undotree'
 
 " alternative & improvement for tagbar
 Plug 'liuchengxu/vista.vim'
@@ -384,7 +378,8 @@ Plug 'tpope/vim-commentary'
 " Plug 'dense-analysis/ale'
 
 " deal with parantheses etc.
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
+Plug 'altermo/ultimate-autopair.nvim'
 
 " auto select text object
 " Plug 'gcmt/wildfire.vim'
@@ -485,8 +480,8 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('matveyt/neoclipo', {'type': 'opt'})
 
-packadd! neoclip
-lua require"neoclip":setup()
+" packadd! neoclip
+" lua require"neoclip":setup()
 "}}}
 "=========================================================================
 " lua {{{
