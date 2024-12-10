@@ -1,5 +1,0 @@
-from PIL import Image
-
-im = Image.open("./Arch.png")
-im.resize((2560, 1440))
-im.save(big.png)

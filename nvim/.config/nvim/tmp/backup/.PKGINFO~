@@ -1,9 +1,0 @@
-pkgname = hiddify
-pkgver = 2.3.1-1
-pkgdesc = Cross Platform Multi Protocol Proxy Frontend.
-url = 
-builddate = 1727976135
-packager = 
-arch = x86_64
-size = 89359726
-license = 

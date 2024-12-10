@@ -1,2 +1,0 @@
-sh ~/Applications/HMCL-3.5.9.sh > /dev/null &
-tty-clock -cC7
