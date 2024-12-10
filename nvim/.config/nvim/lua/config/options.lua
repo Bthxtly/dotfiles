@@ -1,11 +1,13 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
-local o = vim.opt
 
+-- extras
+vim.g.lazyvim_blink_main = true
+
+local o = vim.opt
 o.clipboard = ""
 o.confirm = false -- confirm before exiting file
--- o.foldlevel = 0
 o.foldmethod = "indent"
 vim.cmd("set foldtext=foldtext()")
 o.mouse = "n"

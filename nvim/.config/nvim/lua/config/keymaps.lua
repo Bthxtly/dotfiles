@@ -84,7 +84,6 @@ vim.keymap.set("n", "<F2>", ":Maximize<CR>", { silent = true })
 vim.keymap.set("n", "<F3>", ":lua CompileRunGcc()<CR>", { silent = true })
 vim.keymap.set("n", "<F8>", ":UndotreeToggle<CR>", { silent = true })
 vim.keymap.set("n", "<F9>", ":Neotree toggle<CR>", { silent = true })
-vim.keymap.set("n", "<F10>", ":Vista!!<CR>", { silent = true })
 
 -- Compile function {{{
 function CompileRunGcc()
