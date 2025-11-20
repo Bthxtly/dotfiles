@@ -1,0 +1,32 @@
+// Change the backdrop Rosè Pine
+layout {
+  // background-color "transparent"
+
+  focus-ring {
+    off
+  }
+
+  border {
+    active-gradient from="#eb6f92" to="#c4a7e7" angle=-45
+    inactive-color "#595959aa"
+    urgent-color "#9b0000"
+  }
+
+  shadow {
+    color "#00000070"
+  }
+
+  tab-indicator {
+    active-color   "#685d47"
+    inactive-color "#7a7673"
+    urgent-color   "#ba1a1a"
+  }
+
+  insert-hint {
+    color "#685d4780"
+  }
+}
+
+overview {
+  backdrop-color "#FAF4ED"
+}

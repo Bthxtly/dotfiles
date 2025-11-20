@@ -1,0 +1,501 @@
+// Start up {{{
+spawn-sh-at-startup "kmonad ~/.config/kmonad/config.kbd"
+spawn-sh-at-startup "wl-paste --watch cliphist store"
+spawn-sh-at-startup "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
+spawn-sh-at-startup "fusuma -d"
+spawn-at-startup "zen"
+spawn-at-startup "dms" "run"
+spawn-at-startup "dms" "ipc" "call" "lock" "lock";
+spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+
+//}}}
+
+// Input {{{
+// https://yalter.github.io/niri/Configuration:-Input
+input {
+  keyboard {
+    xkb {
+      // You can set rules, model, layout, variant and options.
+      // For more information, see xkeyboard-config(7).
+    }
+
+    // Enable numlock on startup, omitting this setting disables it.
+    numlock
+
+    // keyboard sensitivity
+    repeat-rate 45
+    repeat-delay 250
+  }
+
+  // Next sections include libinput settings.
+  // Omitting settings disables them, or leaves them at their default values.
+  // All commented-out settings here are examples, not defaults.
+  touchpad {
+    // off
+    tap
+    // dwt
+    // dwtp
+    // drag false
+    // drag-lock
+    natural-scroll
+    // accel-speed 0.2
+    // accel-profile "flat"
+    scroll-method "two-finger"
+    // disabled-on-external-mouse
+  }
+
+  mouse {
+    // off
+    // natural-scroll
+    // accel-speed 0.2
+    accel-profile "flat"
+    // scroll-method "no-scroll"
+  }
+
+  // Uncomment this to make the mouse warp to the center of newly focused windows.
+  warp-mouse-to-focus
+
+  // Focus windows and outputs automatically when moving the mouse into them.
+  // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+  focus-follows-mouse max-scroll-amount="10%"
+} // }}}
+
+// Output {{{
+include "output.kdl"
+// }}}
+
+// // Cursor {{{
+// cursor {
+//   xcursor-theme "BreezeX-RosePineDawn-Linux"
+//   xcursor-size 24
+// } // }}}
+
+// Gesture {{{
+gestures {
+  hot-corners {
+    // off
+    // top-left
+    top-right
+    // bottom-left
+    // bottom-right
+  }
+} // }}}
+
+// Switch Events {{{
+switch-events {
+    // lid-open { spawn "niri" "msg" "output" "DP-1" "on"; }
+    lid-close { spawn "systemctl" "suspend"; }
+} // }}}
+
+// Layout {{{
+// https://yalter.github.io/niri/Configuration:-Layout
+layout {
+  // Set gaps around windows in logical pixels.
+  gaps 0
+
+  always-center-single-column
+
+  // When to center a column when changing focus, options are:
+  // - "never", default behavior, focusing an off-screen column will keep at the left
+  //   or right edge of the screen.
+  // - "always", the focused column will always be centered.
+  // - "on-overflow", focusing a column will center it if it doesn't fit
+  //   together with the previously focused column.
+  center-focused-column "never"
+
+  preset-column-widths {
+    // Proportion sets the width as a fraction of the output width, taking gaps into account.
+    proportion 0.33
+    proportion 0.5
+    proportion 0.67
+
+    // Fixed sets the width in logical pixels exactly.
+    // fixed 1920
+  }
+
+  preset-window-heights {
+    proportion 0.5
+    proportion 0.67
+    proportion 1.0
+  }
+
+  // You can change the default width of the new windows.
+  default-column-width { proportion 0.5; }
+
+  focus-ring {
+    off
+  }
+
+  border {
+    width 2
+    active-gradient from="#eb6f92" to="#c4a7e7" angle=-45
+    inactive-color "#595959aa"
+
+    // Color of the border around windows that request your attention.
+    urgent-color "#9b0000"
+
+    // Gradients can use a few different interpolation color spaces.
+    // For example, this is a pastel rainbow gradient via in="oklch longer hue".
+    //
+    // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
+
+    // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+  }
+
+  // You can enable drop shadows for windows.
+  shadow {
+    // Uncomment the next line to enable shadows.
+    // on
+
+    // By default, the shadow draws only around its window, and not behind it.
+    // Uncomment this setting to make the shadow draw behind its window.
+    //
+    // Note that niri has no way of knowing about the CSD window corner
+    // radius. It has to assume that windows have square corners, leading to
+    // shadow artifacts inside the CSD rounded corners. This setting fixes
+    // those artifacts.
+    //
+    // However, instead you may want to set prefer-no-csd and/or
+    // geometry-corner-radius. Then, niri will know the corner radius and
+    // draw the shadow correctly, without having to draw it behind the
+    // window. These will also remove client-side shadows if the window
+    // draws any.
+    //
+    // draw-behind-window true
+
+    // You can change how shadows look. The values below are in logical
+    // pixels and match the CSS box-shadow properties.
+
+    // Softness controls the shadow blur radius.
+    softness 30
+
+    // Spread expands the shadow.
+    spread 5
+
+    // Offset moves the shadow relative to the window.
+    offset x=0 y=5
+
+    // You can also change the shadow color and opacity.
+    color "#0007"
+  }
+
+  // Struts shrink the area occupied by windows, similarly to layer-shell panels.
+  // You can think of them as a kind of outer gaps. They are set in logical pixels.
+  // Left and right struts will cause the next window to the side to always be visible.
+  // Top and bottom struts will simply add outer gaps in addition to the area occupied by
+  // layer-shell panels and regular gaps.
+  struts {
+    left   2
+    right  2
+    top    2
+    bottom 2
+  }
+} // }}}
+
+// Animations {{{
+// https://yalter.github.io/niri/Configuration:-Animations
+animations {
+  // Uncomment to turn off all animations.
+  // off
+
+  slowdown 0.8
+} // }}}
+
+// Window rules {{{
+// https://yalter.github.io/niri/Configuration:-Window-Rules
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+  // This app-id regular expression will work for both:
+  // - host Firefox (app-id is "firefox")
+  // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  open-floating true
+}
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+window-rule {
+  match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+  match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+  block-out-from "screen-capture"
+
+  // Use this instead if you want them visible on third-party screenshot tools.
+  // block-out-from "screencast"
+}
+
+// Example: enable rounded corners for all windows.
+window-rule {
+  geometry-corner-radius 10
+  clip-to-geometry true
+}
+
+// set transparency {{{2
+window-rule {
+  match app-id="kitty" is-focused=true
+  match app-id="neovide" is-focused=true
+  match app-id="com.mitchellh.ghostty" is-focused=true
+  match app-id="zathura" is-focused=true
+
+  opacity 0.85
+}
+
+window-rule {
+  match app-id="kitty" is-focused=false
+  match app-id="neovide" is-focused=false
+  match app-id="com.mitchellh.ghostty" is-focused=false
+  match app-id="zathura" is-focused=false
+
+  opacity 0.70
+} // }}}
+
+// maximize falsh browser
+window-rule {
+  match app-id="Flash Browser"
+  open-maximized true
+}
+
+// open Zen at `browser` workspace
+window-rule {
+    match at-startup=true app-id="zen-browser"
+    open-on-workspace "browser"
+}
+
+// open Spotify at `music` workspace
+window-rule {
+    match at-startup=true app-id="spotify"
+    open-on-workspace "music"
+}
+
+// }}}
+
+// Miscellaneous {{{
+// layer-rule {
+//     match namespace="^swww-daemonoverview$"
+//     place-within-backdrop true
+// }
+
+// Make the backdrop light.
+overview {
+  backdrop-color "#FAF4ED"
+}
+
+// appearance
+include "colors.kdl"
+
+// Omit their client-side decorations if possible.
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d-%H%M%S_niri.png"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+workspace "arch"
+workspace "niri"
+workspace "neovim"
+workspace "browser"
+workspace "music"
+
+// Disable built in config load errors since dank shell provides this
+config-notification {
+  disable-failed
+}
+
+//}}}
+
+// Bindings: {{{
+binds {
+  // Most actions that you can bind here can also be invoked programmatically with
+  // `niri msg action do-something`.
+
+  // shows a list of important hotkeys.
+  Mod+Shift+Slash { show-hotkey-overlay; }
+
+  // Suggested binds for running programs: terminal, app launcher, screen locker.
+  Mod+Q hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+  Mod+S hotkey-overlay-title="Run an Application: rofi" { spawn-sh "pkill rofi || rofi -show drun"; }
+  Mod+E hotkey-overlay-title="Open kitty quick terminal" {spawn-sh "kitten quick-access-terminal --config ~/dotfiles/kitty/.config/kitty/quick_access_terminal.conf"; }
+  Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+  Mod+Shift+K { spawn-sh "hyprpicker"; }
+
+  Mod+O repeat=false { toggle-overview; }
+
+  Mod+C repeat=false { close-window; }
+
+  Mod+Left  { focus-column-left; }
+  Mod+Right { focus-column-right; }
+
+  Mod+Shift+Left  { move-column-left; }
+  Mod+Shift+Right { move-column-right; }
+
+  // Move across workspaces when reaching the first or last window in a column
+  Mod+Down      { focus-window-or-workspace-down; }
+  Mod+Up        { focus-window-or-workspace-up; }
+  Mod+Shift+Down { move-window-down-or-to-workspace-down; }
+  Mod+Shift+Up   { move-window-up-or-to-workspace-up; }
+
+  // Touchpad scrolling is continuous, so for these binds it is split into
+  // discrete intervals.
+  Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
+  Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
+
+  Mod+1 { focus-workspace 1; }
+  Mod+2 { focus-workspace 2; }
+  Mod+3 { focus-workspace 3; }
+  Mod+4 { focus-workspace 4; }
+  Mod+5 { focus-workspace 5; }
+  Mod+6 { focus-workspace 6; }
+  Mod+7 { focus-workspace 7; }
+  Mod+8 { focus-workspace 8; }
+  Mod+9 { focus-workspace "music"; }
+  Mod+Shift+1 { move-window-to-workspace 1; }
+  Mod+Shift+2 { move-window-to-workspace 2; }
+  Mod+Shift+3 { move-window-to-workspace 3; }
+  Mod+Shift+4 { move-window-to-workspace 4; }
+  Mod+Shift+5 { move-window-to-workspace 5; }
+  Mod+Shift+6 { move-window-to-workspace 6; }
+  Mod+Shift+7 { move-window-to-workspace 7; }
+  Mod+Shift+8 { move-window-to-workspace 8; }
+  Mod+Shift+9 { move-window-to-workspace "music"; }
+
+  // Switches focus between the current and the previous workspace.
+  Mod+A { focus-window-previous; }
+
+  // The following binds move the focused window in and out of a column.
+  // If the window is alone, they will consume it into the nearby column to the side.
+  // If the window is already in a column, they will expel it out.
+  Mod+Shift+Comma  { consume-or-expel-window-left; }
+  Mod+Shift+Period { consume-or-expel-window-right; }
+
+  // Consume one window from the right to the bottom of the focused column.
+  Mod+Comma  { consume-window-into-column; }
+  // Expel the bottom window from the focused column to the right.
+  Mod+Period { expel-window-from-column; }
+
+  Mod+R { switch-preset-column-width; }
+  // Mod+Shift+R { switch-preset-column-width-back; }
+  Mod+H { switch-preset-window-height; }
+  Mod+Shift+H { reset-window-height; }
+
+  Mod+F { maximize-column; }
+  Mod+Shift+F { fullscreen-window; }
+
+  // Expand the focused column to space not taken up by other fully visible columns.
+  // Makes the column "fill the rest of the space".
+  Mod+Ctrl+F { expand-column-to-available-width; }
+
+  Mod+T { center-column; }
+
+  // Center all fully visible columns on screen.
+  Mod+Ctrl+C { center-visible-columns; }
+
+  // Finer width adjustments.
+  Mod+Ctrl+Right { set-column-width "+10%"; }
+  Mod+Ctrl+Left { set-column-width "-10%"; }
+
+  // Finer height adjustments when in column with other windows.
+  Mod+Ctrl+Up    { set-window-height "-10%"; }
+  Mod+Ctrl+Down  { set-window-height "+10%"; }
+
+  // Move the focused window between the floating and the tiling layout.
+  Mod+V       { toggle-window-floating; }
+  Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+  // Toggle tabbed column display mode.
+  // Windows in this column will appear as vertical tabs,
+  // rather than stacked on top of each other.
+  Mod+W { toggle-column-tabbed-display; }
+
+  Print { screenshot; }
+  Ctrl+Print { screenshot-screen; }
+  Shift+Print { screenshot-window; }
+
+  // Applications such as remote-desktop clients and software KVM switches may
+  // request that niri stops processing the keyboard shortcuts defined here
+  // so they may, for example, forward the key presses as-is to a remote machine.
+  // It's a good idea to bind an escape hatch to toggle the inhibitor,
+  // so a buggy application can't hold your session hostage.
+  //
+  // The allow-inhibiting=false property can be applied to other binds as well,
+  // which ensures niri always processes them, even when an inhibitor is active.
+  Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+  // The quit action will show a confirmation dialog to avoid accidental exits.
+  Mod+Delete { quit; }
+
+  // Powers off the monitors. To turn them back on, do any input like
+  // moving the mouse or pressing any other key.
+  Mod+Shift+P { power-off-monitors; }
+
+  // Dank binds {{{2
+  // Mod+Space hotkey-overlay-title="Application Launcher" {
+  //   spawn "dms" "ipc" "call" "spotlight" "toggle";
+  // }
+  Mod+Ctrl+V hotkey-overlay-title="Clipboard Manager" {
+    spawn "dms" "ipc" "call" "clipboard" "toggle";
+  }
+  Mod+M hotkey-overlay-title="Task Manager" {
+    spawn "dms" "ipc" "call" "processlist" "toggle";
+  }
+  Mod+N hotkey-overlay-title="Notification Center" {
+    spawn "dms" "ipc" "call" "notifications" "toggle";
+  }
+  Mod+Shift+M hotkey-overlay-title="Settings" {
+    spawn "dms" "ipc" "call" "settings" "toggle";
+  }
+  // Mod+P hotkey-overlay-title="Notepad" {
+  //   spawn "dms" "ipc" "call" "notepad" "toggle";
+  // }
+  Mod+Shift+L hotkey-overlay-title="Lock Screen" {
+    spawn "dms" "ipc" "call" "lock" "lock";
+  }
+  Mod+X hotkey-overlay-title="Power Menu" {
+    spawn "dms" "ipc" "call" "powermenu" "toggle";
+  }
+  Mod+Shift+C hotkey-overlay-title="Control Center" {
+    spawn "dms" "ipc" "call" "control-center" "toggle";
+  }
+  XF86AudioPrev allow-when-locked=true{
+    spawn "dms" "ipc" "call" "mpris" "previous"
+  }
+  XF86AudioNext allow-when-locked=true{
+    spawn "dms" "ipc" "call" "mpris" "next"
+  }
+  XF86AudioPlay allow-when-locked=true{
+    spawn "dms" "ipc" "call" "mpris" "playPause"
+  }
+  XF86AudioRaiseVolume allow-when-locked=true {
+    spawn "dms" "ipc" "call" "audio" "increment" "5";
+  }
+  XF86AudioLowerVolume allow-when-locked=true {
+    spawn "dms" "ipc" "call" "audio" "decrement" "5";
+  }
+  XF86AudioMute allow-when-locked=true {
+    spawn "dms" "ipc" "call" "audio" "mute";
+  }
+  XF86AudioMicMute allow-when-locked=true {
+    spawn "dms" "ipc" "call" "audio" "micmute";
+  }
+  XF86MonBrightnessUp allow-when-locked=true {
+    spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
+  }
+  // You can override the default device for e.g. keyboards by adding the device name to the last param
+  XF86MonBrightnessDown allow-when-locked=true {
+    spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
+  }
+  // Night mode toggle
+  Mod+Shift+N allow-when-locked=true {
+    spawn "dms" "ipc" "call" "night" "toggle";
+  } // }}}
+
+  // My scripts {{{2
+  Mod+I {
+    spawn-sh "pkill rofi || ~/.config/niri/scripts/actions.sh"
+  }
+  //}}}
+} // }}}
+
+// vim:fdm=marker:fdl=0

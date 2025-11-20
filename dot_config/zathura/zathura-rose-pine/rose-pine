@@ -1,0 +1,54 @@
+# https://github.com/rose-pine/rose-pine-theme
+# Soho vibes for Zathura: Rosé Pine
+#
+# Usage:
+# Copy contents of this file to ~/.config/zathura/zathurarc
+#
+# Change 'recolor' and 'recolor-keephue' to true to change
+# the document colors for a more uniform viewing experience.
+
+set default-fg                  "#e0def4"   # Text
+set default-bg                  "#191724"   # Base
+
+set statusbar-fg                "#e0def4"   # Text
+set statusbar-bg                "#1f1d2e"   # Surface
+
+set inputbar-fg                 "#e0def4"   # Text
+set inputbar-bg                 "#1f1d2e"   # Surface
+
+# Notification
+set notification-fg             "#e0def4"   # Text
+set notification-bg             "#1f1d2e"   # Surface
+
+set notification-error-fg       "#e0def4"   # Text
+set notification-error-bg       "#f6c177"   # Gold
+
+set notification-warning-fg     "#e0def4"   # Text
+set notification-warning-bg     "#f6c177"   # Gold
+
+# Selected text highlight
+set highlight-color             "rgba(0xeb, 0x6f, 0x92, 0.2)" # Love
+set highlight-active-color      "rgba(0xc4, 0xa7, 0xe7, 0.2)" # Iris
+
+# Completion
+set completion-fg               "#e0def4"   # Text
+set completion-bg               "#26233a"   # Overlay
+
+set completion-group-fg         "#e0def4"   # Text
+set completion-group-bg         "#524f67"   # Highlight High
+
+set completion-highlight-fg     "#ebbcba"   # Rose
+set completion-highlight-bg     "#403d52"   # Highlight Med
+
+# Index
+set index-fg                    "#e0def4"   # Text
+set index-bg                    "#26233a"   # Overlay
+set index-active-fg             "#ebbcba"   # Rose
+set index-active-bg             "#403d52"   # Highlight Med
+
+# Recolor
+set recolor-lightcolor          "#191724"   # Base
+set recolor-darkcolor           "#e0def4"   # Text
+
+set recolor                     "false"
+set recolor-keephue             "false"

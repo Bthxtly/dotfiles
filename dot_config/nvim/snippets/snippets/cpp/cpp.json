@@ -1,0 +1,400 @@
+{
+  "#def": {
+    "body": [
+      "#define $0"
+    ],
+    "description": "Code snippet for #define \" \"",
+    "prefix": "def"
+  },
+  "#guard": {
+    "body": [
+      "#ifndef INCLUDE${TM_DIRECTORY/.*[\\/](.*)/_${1:/upcase}/}${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}",
+      "#define INCLUDE${TM_DIRECTORY/.*[\\/](.*)/_${1:/upcase}/}${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}",
+      "",
+      "$0",
+      "",
+      "#endif // INCLUDE${TM_DIRECTORY/.*[\\/](.*)/_${1:/upcase}/}${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}"
+    ],
+    "description": "header guard. format :\n\tINCLUDE_<dirname>_<filename>_<extension>_",
+    "prefix": "guard"
+  },
+  "#if": {
+    "body": [
+      "#if ${1:0}",
+      "$0",
+      "#endif // $1"
+    ],
+    "description": "Code snippet for #if",
+    "prefix": "#if"
+  },
+  "#ifdef": {
+    "body": [
+      "#ifdef ${1:DEBUG}",
+      "$0",
+      "#endif // $1"
+    ],
+    "description": "Code snippet for #ifdef",
+    "prefix": "#ifdef"
+  },
+  "#ifndef": {
+    "body": [
+      "#ifndef ${1:DEBUG}",
+      "$0",
+      "#endif // !$1"
+    ],
+    "description": "Code snippet for #ifndef",
+    "prefix": "#ifndef"
+  },
+  "#inc": {
+    "body": "#include \"$1\"$2",
+    "description": "Code snippet for #include \" \"",
+    "prefix": "incmy"
+  },
+  "#inc<": {
+    "body": "#include <$1>$2",
+    "description": "Code snippet for #include < >",
+    "prefix": "inc"
+  },
+  "Main function template": {
+    "body": [
+      "int main (int argc, char *argv[]) {",
+      "\t$1",
+      "\treturn 0;",
+      "}"
+    ],
+    "description": "A standard main function for a C++ program",
+    "prefix": "main"
+  },
+  "Starter Template": {
+    "body": [
+      "#include <iostream>",
+      "",
+      "int main (int argc, char *argv[]) {",
+      "  $1",
+      "  return 0;",
+      "}"
+    ],
+    "description": "Standard starter template for a tiny C++ program",
+    "prefix": "st"
+  },
+  "af": {
+    "body": [
+      "auto ${1:name}( ${2:void} ) -> ${3:auto} {",
+      "\t${5}",
+      "}"
+    ],
+    "description": "auto function and trailing return",
+    "prefix": "af"
+  },
+  "cca": {
+    "body": [
+      "const_cast<${1:unsigned}>(${2:expr})$3"
+    ],
+    "description": "const_cast<type>(expression)",
+    "prefix": "cca"
+  },
+  "cin": {
+    "body": [
+      "std::cin >> $1;"
+    ],
+    "description": "Code snippet for std::cin, provided the header is set",
+    "prefix": "cin"
+  },
+  "class": {
+    "body": [
+      "class ${1:MyClass} {",
+      "public:",
+      "\t$1();",
+      "\t$1($1 &&) = default;",
+      "\t$1(const $1 &) = default;",
+      "\t$1 &operator=($1 &&) = default;",
+      "\t$1 &operator=(const $1 &) = default;",
+      "\t~$1();",
+      "",
+      "private:",
+      "\t$2",
+      "};",
+      "",
+      "$1::$1() {",
+      "}",
+      "",
+      "$1::~$1() {",
+      "}"
+    ],
+    "description": "Code snippet for class",
+    "prefix": "class"
+  },
+  "classi": {
+    "body": [
+      "class ${1:MyClass} {",
+      "public:",
+      "\t$1() = default;",
+      "\t$1($1 &&) = default;",
+      "\t$1(const $1 &) = default;",
+      "\t$1 &operator=($1 &&) = default;",
+      "\t$1 &operator=(const $1 &) = default;",
+      "\t~$1() = default;",
+      "",
+      "private:",
+      "\t$2",
+      "};"
+    ],
+    "description": "Code snippet for class with inline constructor/destructor",
+    "prefix": "classi"
+  },
+  "cout": {
+    "body": [
+      "std::cout << ${1:message};"
+    ],
+    "description": "Code snippet for printing to std::cout, provided the header is set",
+    "prefix": "cout"
+  },
+  "dca": {
+    "body": [
+      "dynamic_cast<${1:unsigned}>(${2:expr})$3"
+    ],
+    "description": "dynamic_cast<type>(expression)",
+    "prefix": "dca"
+  },
+  "do": {
+    "body": [
+      "do {",
+      "\t$0",
+      "} while($1);"
+    ],
+    "description": "Code snippet for do...while loop",
+    "prefix": "do"
+  },
+  "eclass": {
+    "body": [
+      "class ${1:MyClass} {",
+      "public:",
+      "\t$2",
+      "private:",
+      "\t$3",
+      "};",
+      ""
+    ],
+    "description": "Code snippet for empty class",
+    "prefix": "eclass"
+  },
+  "else": {
+    "body": [
+      "else {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Code snippet for else statement",
+    "prefix": "else"
+  },
+  "else if": {
+    "body": [
+      "else if ($1) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Code snippet for else-if statement",
+    "prefix": "else if"
+  },
+  "enum": {
+    "body": [
+      "enum ${1:MyEnum} {",
+      "\t$0",
+      "};"
+    ],
+    "description": "Code snippet for enum",
+    "prefix": "enum"
+  },
+  "enum class": {
+    "body": [
+      "enum class ${1:MyClass} {$0};"
+    ],
+    "description": "Code snippet for enum class (c++11)",
+    "prefix": "enum class"
+  },
+  "for": {
+    "body": [
+      "for (${1:size_t} ${2:i} = ${3:0}; $2 < ${4:length}; $2++) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Code snippet for 'for' loop",
+    "prefix": "for"
+  },
+  "foreach": {
+    "body": [
+      "for(${1:auto} ${2:var} : ${3:collection_to_loop}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Code snippet for range-based for loop (c++11) statement",
+    "prefix": "foreach"
+  },
+  "forr": {
+    "body": [
+      "for (${1:size_t} ${2:i} = ${3:length} - 1; $2 >= ${4:0}; $2--) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Code snippet for reverse 'for' loop",
+    "prefix": "forr"
+  },
+  "fprintf": {
+    "body": [
+      "fprintf(${1:stderr}, \"$2\\n\"$0);"
+    ],
+    "description": "Generic fprintf() snippet",
+    "prefix": "fprintf"
+  },
+  "fscanf": {
+    "body": [
+      "fscanf($1, \"$2\"$0);"
+    ],
+    "description": "Generic fscanf() snippet",
+    "prefix": "fscanf"
+  },
+  "hguard": {
+    "body": [
+      "#ifndef ${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}_",
+      "#define ${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}_",
+      "",
+      "$0",
+      "",
+      "#endif  // ${TM_FILENAME_BASE/(.*)/_${1:/upcase}/}${TM_FILENAME/.*\\.(.*)/_${1:/upcase}/}_"
+    ],
+    "prefix": "hguard"
+  },
+  "if": {
+    "body": [
+      "if ($1) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Code snippet for if statement",
+    "prefix": "if"
+  },
+  "interface": {
+    "body": [
+      "__interface I${1:Interface} {",
+      "\t$0",
+      "};"
+    ],
+    "description": "Code snippet for interface (Visual C++)",
+    "prefix": "interface"
+  },
+  "namespace": {
+    "body": [
+      "namespace ${1:MyNamespace} {",
+      "\t$0",
+      "}"
+    ],
+    "prefix": "namespace"
+  },
+  "printf": {
+    "body": [
+      "printf(\"$1\\n\"$0);"
+    ],
+    "description": "Generic printf() snippet",
+    "prefix": "printf"
+  },
+  "qclass": {
+    "body": [
+      "class ${1:MyClass} : public QObject {",
+      "\tQ_OBJECT;",
+      "public:",
+      "\nexplicit $1(QObject *parent = nullptr);",
+      "\t$2",
+      "signals:",
+      "",
+      "public slots:",
+      "};",
+      ""
+    ],
+    "description": "Code snippet for empty Qt class",
+    "prefix": "qclass"
+  },
+  "rca": {
+    "body": [
+      "reinterpret_cast<${1:unsigned}>(${2:expr})$3"
+    ],
+    "description": "reinterpret_cast<type>(expression)",
+    "prefix": "rca"
+  },
+  "sca": {
+    "body": [
+      "static_cast<${1:unsigned}>(${2:expr})$3"
+    ],
+    "description": "static_cast<type>(expression)",
+    "prefix": "sca"
+  },
+  "scanf": {
+    "body": [
+      "scanf(\"$1\"$0);"
+    ],
+    "description": "Generic scanf() snippet",
+    "prefix": "scanf"
+  },
+  "sprintf": {
+    "body": [
+      "sprintf($1, \"$2\\n\"$0);"
+    ],
+    "description": "Generic sprintf() snippet",
+    "prefix": "sprintf"
+  },
+  "sscanf": {
+    "body": [
+      "sscanf($1, \"$2\"$0);"
+    ],
+    "description": "Generic sscanf() snippet",
+    "prefix": "sscanf"
+  },
+  "struct": {
+    "body": [
+      "struct ${1:MyStruct} {",
+      "\t$0",
+      "};"
+    ],
+    "description": "Code snippet for struct",
+    "prefix": "struct"
+  },
+  "switch": {
+    "body": [
+      "switch (${1:switch_on}) {",
+      "\tdefault:",
+      "\t\t$0",
+      "\t\tbreak;",
+      "}"
+    ],
+    "description": "Code snippet for switch statement",
+    "prefix": "switch"
+  },
+  "try": {
+    "body": [
+      "try {",
+      "\t$2",
+      "}",
+      "catch (${1:const std::exception&}) {",
+      "}"
+    ],
+    "description": "Code snippet for try catch",
+    "prefix": "try"
+  },
+  "union": {
+    "body": [
+      "union ${1:MyUnion} {",
+      "\t$0",
+      "};"
+    ],
+    "description": "Code snippet for union",
+    "prefix": "union"
+  },
+  "while": {
+    "body": [
+      "while ($1) {",
+      "\t$2",
+      "}"
+    ],
+    "description": "",
+    "prefix": "while"
+  }
+}

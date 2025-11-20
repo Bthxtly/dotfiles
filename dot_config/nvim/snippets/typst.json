@@ -1,0 +1,59 @@
+{
+  "b": {
+    "body": "*$1*$0",
+    "prefix": "b"
+  },
+  "cb": {
+    "body": [
+      "```${1:typst}",
+      "```"
+    ],
+    "prefix": "cb"
+  },
+  "f": {
+    "body": "\\$${1:f}(${2:x})\\$$0",
+    "prefix": "f"
+  },
+  "ha": {
+    "body": "= $0",
+    "prefix": "ha"
+  },
+  "hr": {
+    "body": "== $0",
+    "prefix": "hr"
+  },
+  "hs": {
+    "body": "=== $0",
+    "prefix": "hs"
+  },
+  "inte": {
+    "body": "integral_${1:a}^${2:b} ${3:f(x)} dif ${4:x}",
+    "prefix": "inte"
+  },
+  "ma": {
+    "body": "\\$$1\\$$0",
+    "prefix": "y"
+  },
+  "maa": {
+    "body": [
+      "\\$ $1 \\$",
+      "$0"
+    ],
+    "prefix": "yy"
+  },
+  "mkdocs": {
+    "body": [
+      "#makedocs(```typst",
+      "  #cetz.canvas({",
+      "    import cetz.draw: *",
+      "    $0",
+      "  })",
+      "```)"
+    ],
+    "prefix": "mkdocs"
+  },
+  "x": {
+    "body": "\\$x\\$$0",
+    "prefix": "x"
+  }
+}

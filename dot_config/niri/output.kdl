@@ -1,0 +1,24 @@
+// https://yalter.github.io/niri/Configuration:-Outputs
+output "eDP-1" {
+  off
+  mode "2560x1440@240.000"
+  scale 1.6
+  transform "normal"
+  // under the external monitor
+  position x=0 y=1152
+  variable-refresh-rate
+}
+
+output "DP-1" {
+  mode "2560x1440@180.000"
+  scale 1.25
+  transform "normal"
+  position x=0 y=0
+}
+
+output "DP-2" {
+  mode "2560x1440@180.000"
+  scale 1.25
+  transform "normal"
+  position x=0 y=0
+}

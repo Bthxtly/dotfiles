@@ -1,0 +1,49 @@
+map R reload
+
+# move around
+map e scroll down
+map y scroll up
+map t scroll full-down
+map b scroll full-up
+
+# map [index] e move down
+# map [index] y move up
+
+# zoom
+map E zoom in
+map Y zoom out
+map <C-e> zoom in
+map <C-y> zoom out
+
+# enable copy to clipboard
+set selection-clipboard clipboard
+
+# Open document in fit-width mode by default
+set adjust-open 'best-fit'
+
+# One page per row by default
+set pages-per-row 1
+
+#stop at page boundries
+set scroll-page-aware "true"
+# set smooth-scroll "true"
+set scroll-full-overlap 0.01
+set scroll-step 50
+
+#zoom settings
+set zoom-min 10
+set guioptions ""
+
+set render-loading "false"
+set scroll-step 50
+
+
+# color configure
+include current_theme.conf
+
+set recolor                     true
+set recolor-keephue             true
+set render-loading              true
+map <C-l> feedkeys
+
+set window-title-home-tilde true

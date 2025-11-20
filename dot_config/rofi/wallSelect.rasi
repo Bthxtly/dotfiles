@@ -1,0 +1,105 @@
+// # z0mbi3 -  https://github.com/gh0stzk/dotfiles
+
+configuration {
+    modi:                "drun";
+    show-icons:          true;
+    drun-display-format: "{name}";
+    font:                "ComicShannsMono Nerd Font 10";
+    hover-select:        true;
+}
+
+//----- Global Properties -----//
+
+* {
+main-bg:                 #faf4ed;
+main-fg:                 #575279;
+select-bg:               #dfdad9;
+select-fg:               #575279;
+}
+
+//----- Main Window -----//
+
+window {
+    enabled:             true;
+    fullscreen:          false;
+    height:              inherit;
+    width:               60%;
+    transparency:        "real";
+    cursor:              "default";
+    spacing:             0px;
+    padding:             0px;
+    border:              10px;
+    border-radius:       10px;
+    border-color:        inherit;
+    background-color:    inherit;
+}
+
+//----- Main Box -----//
+
+mainbox {
+    enabled:             true;
+    children:            [ "inputbar", "listview" ];
+    background-color:    @main-bg;
+}
+
+entry {
+    expand:              true;
+    placeholder:         "";
+    horizontal-align:    0.5;
+}
+
+//----- Listview -----//
+
+listview {
+    enabled:             true;
+    columns:             5;
+    lines:               2;
+    spacing:             50px;
+    padding:             20px 30px;
+    cycle:               true;
+    dynamic:             true;
+    scrollbar:           false;
+    flow:                horizontal;
+    layout:              vertical;
+    fixed-height:        false;
+    fixed-columns:       true;
+    cursor:              "default";
+    background-color:    transparent;
+    text-color:          @main-fg;
+}
+
+//----- Elements -----//
+
+element {
+    enabled:             true;
+    orientation:         horizontal;
+    spacing:             0px;
+    padding:             0px;
+    border-radius:       20px;
+    cursor:              pointer;
+    background-color:    transparent;
+    text-color:          @main-fg;
+    orientation:         vertical;
+}
+
+element selected.normal {
+    background-color:    @select-bg;
+    text-color:          @select-fg;
+}
+
+element-icon {
+    size:                10%;
+    cursor:              inherit;
+    border-radius:       0px;
+    background-color:    transparent;
+    text-color:          inherit;
+}
+
+element-text {
+    vertical-align:      0.5;
+    horizontal-align:    0.5;
+    padding:             20px;
+    cursor:              inherit;
+    background-color:    transparent;
+    text-color:          inherit;
+}
