@@ -1,7 +1,16 @@
 vim.cmd("source ~/.config/nvim/current_theme.vim")
 
+local rosepine = false
+local gruvbox = false
+
+-- if vim.g.neovide or vim.env.TERM_PROGRAM == "ghostty" then
+if true then
+  rosepine = true
+else
+  gruvbox = true
+end
+
 return {
-  -- add gruvbox
   {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
@@ -32,10 +41,7 @@ return {
       }
       require("gruvbox").setup(opts)
 
-      -- if vim.g.neovide or vim.env.TERM_PROGRAM == "ghostty" then
-      if true then
-        vim.cmd("colorscheme rose-pine")
-      else
+      if gruvbox then
         vim.cmd("colorscheme gruvbox")
       end
     end,
@@ -49,9 +55,23 @@ return {
         dark_variant = "moon",
 
         highlight_groups = {
-          Keyword = { fg = "love" },
+          -- Keyword = { fg = "love" },
+          Type = { fg = "rose" },
+          ["@type"] = { fg = "rose" },
+          ["@type.builtin"] = { fg = "rose" },
+
+          ["@function"] = { fg = "love", bold = true },
+          ["@function.call.rust"] = { fg = "iris", italic = true },
+
+          ["@variable.builtin"] = { fg = "gold", bold = false },
+          ["@variable.parameter"] = { bg = "iris", blend = 15 },
+          ["@operator.rust"] = { fg = "pine" },
         },
       })
+
+      if rosepine then
+        vim.cmd("colorscheme rose-pine")
+      end
     end,
   },
 
