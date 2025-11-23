@@ -317,7 +317,7 @@ binds {
   // Suggested binds for running programs: terminal, app launcher, screen locker.
   Mod+Q hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
   Mod+S hotkey-overlay-title="Run an Application: rofi" { spawn-sh "pkill rofi || rofi -show drun"; }
-  Mod+E hotkey-overlay-title="Open kitty quick terminal" {spawn-sh "kitten quick-access-terminal --config ~/dotfiles/kitty/.config/kitty/quick_access_terminal.conf"; }
+  Mod+E hotkey-overlay-title="Open kitty quick terminal" {spawn-sh "kitten quick-access-terminal --config ~/.config/kitty/quick_access_terminal.conf"; }
   Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
   Mod+Shift+K { spawn-sh "hyprpicker"; }
 
