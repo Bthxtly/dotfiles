@@ -7,6 +7,6 @@ return {
         ["+"] = "actions.select",
       },
     },
-    dependencies = { { "echasnovski/mini.icons", lazy = true } },
+    dependencies = { { "nvim-tree/nvim-web-devicons", lazy = true } },
   },
 }
