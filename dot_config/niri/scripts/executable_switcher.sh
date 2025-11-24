@@ -8,6 +8,11 @@ if [[ "$theme" == "light" ]]; then
   mode="1 s/light/dark/"
 elif [[ "$theme" == "dark" ]]; then
   mode="1 s/dark/light/"
+
+  # fix gtk-css issue with zathura
+  gtk3_path="~/.config/gtk-3.0"
+  awk 'NR<5 || NR >7803 {print $0}' "$gtk3_path"/gtk.css >/tmp/gtk.css
+  mv /tmp/gtk.css "$gtk3_path"/gtk.css
 fi
 
 # nvim
