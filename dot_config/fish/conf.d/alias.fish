@@ -14,7 +14,7 @@ alias 'nv=clear && nvidia-smi'
 alias 'sd=unset all_proxy ALL_PROXY && ~/Applications/stable-diffusion-webui/webui.sh'
 alias 'si=swayimg'
 
-alias 'fly=cd $(fd --hidden --type directory | fzf --preview "ls {}")'
+alias 'fly=cd && cd $(fd --hidden --type directory | fzf --preview "ls {}")'
 
 # zoxide
 alias 'cd=__zoxide_z'
