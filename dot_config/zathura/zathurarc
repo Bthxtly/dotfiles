@@ -44,6 +44,5 @@ include current_theme.conf
 set recolor                     true
 set recolor-keephue             true
 set render-loading              true
-map <C-l> feedkeys
 
 set window-title-home-tilde true
