@@ -61,7 +61,7 @@ return {
           ["@type.builtin"] = { fg = "rose" },
 
           ["@function"] = { fg = "love", bold = true },
-          ["@function.call.rust"] = { fg = "iris", italic = true },
+          ["@function.call"] = { fg = "iris", italic = true },
 
           ["@variable.builtin"] = { fg = "gold", bold = false },
           ["@variable.parameter"] = { bg = "iris", blend = 15 },
