@@ -2,6 +2,8 @@
 # author: Bruno Ferreira Pinto, Pawel Zubrycki
 
 function fish_prompt
+    set -l last_status $status
+
     set -l cyan (set_color -o cyan)
     set -l yellow (set_color -o yellow)
     set -l red (set_color -o red)
@@ -9,14 +11,9 @@ function fish_prompt
     set -l blue (set_color -o blue)
     set -l normal (set_color normal)
 
-    set -l arrow_color "$green"
-    if test $status != 0
-        set arrow_color "$red"
-    end
-
-    set -l arrow "$arrow_color➜ "
-    if fish_is_root_user
-        set arrow "$arrow_color# "
+    set -l arrow "$green➜ "
+    if test $last_status != 0
+        set arrow "$red✗ "
     end
 
     set -l cwd $cyan(prompt_pwd)
