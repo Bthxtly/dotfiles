@@ -54,6 +54,13 @@ return {
         variant = "auto",
         dark_variant = "moon",
 
+        palette = {
+          -- Override the builtin palette per variant
+          dawn = {
+            base = "#FAF0E8",
+          },
+        },
+
         highlight_groups = {
           -- Keyword = { fg = "love" },
           Type = { fg = "rose" },

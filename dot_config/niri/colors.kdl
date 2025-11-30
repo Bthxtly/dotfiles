@@ -1,6 +1,6 @@
 // Change the backdrop Rosè Pine
 layout {
-  // background-color "transparent"
+  background-color "transparent"
 
   focus-ring {
     off
@@ -17,9 +17,9 @@ layout {
   }
 
   tab-indicator {
-    active-color   "#685d47"
-    inactive-color "#7a7673"
-    urgent-color   "#ba1a1a"
+    active-color "#d7827eaa"
+    inactive-color "#56949faa"
+    urgent-color   "#b4637a"
   }
 
   insert-hint {
