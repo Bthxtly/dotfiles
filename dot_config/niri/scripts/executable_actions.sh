@@ -32,6 +32,13 @@ toggle_theme() {
   ~/.config/niri/scripts/switcher.sh
 }
 
+edit_screenshot() {
+  TMP_SCREENSHOT=/tmp/screenshot
+  niri msg action screenshot-screen --path $TMP_SCREENSHOT
+  sleep 1
+  swappy -f $TMP_SCREENSHOT
+}
+
 show_media() {
   dms ipc call dash open media
 }
@@ -63,13 +70,14 @@ uptime_info() {
 # --- Menu via rofi ---
 point='Get point position'
 area='Get area position'
+screenshot='Edit screenshot'
 media='Show current media'
 overview='Show overview'
 weather='Show weather'
 wallpaper='Show wallpaper'
 suspend='Suspend'
 theme='Toggle light/dark theme'
-choices="$point\n$area\n$theme\n$media\n$overview\n$weather\n$wallpaper\n$suspend\nTime\nUptime"
+choices="$point\n$area\n$screenshot\n$theme\n$media\n$overview\n$weather\n$wallpaper\n$suspend\nTime\nUptime"
 
 selected=$(echo -e "$choices" | rofi -i -dmenu -p "Choose an action")
 
@@ -77,6 +85,7 @@ selected=$(echo -e "$choices" | rofi -i -dmenu -p "Choose an action")
 case "$selected" in
 $point) get_point ;;
 $area) get_area ;;
+$screenshot) edit_screenshot ;;
 $theme) toggle_theme ;;
 $media) show_media ;;
 $overview) show_overview ;;
