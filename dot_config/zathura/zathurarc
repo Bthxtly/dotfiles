@@ -12,8 +12,6 @@ map b scroll full-up
 # zoom
 map E zoom in
 map Y zoom out
-map <C-e> zoom in
-map <C-y> zoom out
 
 # enable copy to clipboard
 set selection-clipboard clipboard
