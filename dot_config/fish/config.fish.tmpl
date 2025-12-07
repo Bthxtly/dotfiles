@@ -1,9 +1,11 @@
 if status is-interactive
     # shell integrations
     fzf --fish | source
-    thefuck --alias | source
     zoxide init fish | source
+    {{- if eq .chezmoi.os "linux" }}
+    thefuck --alias | source
     niri completions fish | source
+    {{- end }}
 
     # clear greeting message
     set -U fish_greeting
