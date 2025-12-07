@@ -4,49 +4,36 @@ vim.cmd([[cabbr ccc CodeCompanionChat]])
 return {
   {
     "olimorris/codecompanion.nvim",
+    version = "v17.33.0",
     lazy = true,
     cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionCmd", "CodeCompanionActions" },
-    opts = {
-      strategies = {
-        chat = {
-          adapter = {
-            name = "ollama",
-            model = "qwen2.5-coder:14b",
-          },
-        },
-        inline = {
-          adapter = {
-            name = "ollama",
-            model = "qwen2.5-coder:14b",
-          },
-        },
-        cmd = {
-          adapter = {
-            name = "ollama",
-            model = "qwen2.5-coder:14b",
-          },
-        },
-      },
-
-      adapters = {
-        http = {
-          gemini = function()
-            return require("codecompanion.adapters").extend("gemini", {
-              env = {
-                api_key = "GEMINI_API_KEY",
-              },
-            })
-          end,
-        },
-      },
-    },
     dependencies = {
       { "nvim-lua/plenary.nvim", branch = "master" },
+      { "zbirenbaum/copilot.lua" },
+    },
+  },
+
+  {
+    "zbirenbaum/copilot.lua",
+    lazy = true,
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+      filetypes = {
+        python = true,
+        c = true,
+        cpp = true,
+        rust = true,
+        ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
+      },
     },
   },
 
   {
     "milanglacier/minuet-ai.nvim",
+    enabled = false,
     lazy = true,
     config = function()
       require("minuet").setup({

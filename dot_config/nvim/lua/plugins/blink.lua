@@ -4,20 +4,25 @@ return {
   -- code completion
   {
     "saghen/blink.cmp",
+    dependencies = {
+      -- "milanglacier/minuet-ai.nvim",
+      "fang2hou/blink-copilot",
+    },
     -- version = "*",
     build = "cargo build --release",
     lazy = true,
     event = { "InsertEnter", "CmdlineEnter" },
+
     opts = {
       snippets = { preset = "luasnip" },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
+        default = { "lsp", "path", "snippets", "buffer", "copilot" },
         per_filetype = {
           lua = { inherit_defaults = true, "lazydev" },
-          python = { inherit_defaults = true, "minuet" },
-          c = { inherit_defaults = true, "minuet" },
-          cpp = { inherit_defaults = true, "minuet" },
-          rust = { inherit_defaults = true, "minuet" },
+          -- python = { inherit_defaults = true, "minuet" },
+          -- c = { inherit_defaults = true, "minuet" },
+          -- cpp = { inherit_defaults = true, "minuet" },
+          -- rust = { inherit_defaults = true, "minuet" },
           codecompanion = { "codecompanion" },
         },
         providers = {
@@ -32,6 +37,12 @@ return {
             async = true,
             timeout_ms = 3000,
             score_offset = 50,
+          },
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 100,
+            async = true,
           },
         },
       },
@@ -70,7 +81,7 @@ return {
       keymap = {
         ["<C-y>"] = { "accept", "fallback" },
         ["<C-k>"] = { "fallback" }, -- disable <c-k> in insert mode
-        ["<C-a>"] = require("minuet").make_blink_map(),
+        -- ["<C-a>"] = require("minuet").make_blink_map(),
         ["<CR>"] = {},
         ["<Up>"] = {},
         ["<Down>"] = {},
