@@ -52,6 +52,7 @@ o.virtualedit = "block" -- Allow cursor to move where there is no text in visual
 o.wrap = false
 o.formatexpr = "v:lua.require'conform'.formatexpr()"
 o.signcolumn = "yes"
+vim.o.exrc = true
 
 -- Enable persistent undo
 o.undofile = true
