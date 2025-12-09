@@ -39,6 +39,10 @@ map("n", "<leader>bp", "<cmd>bp<cr>", { desc = "switch to previous buffer" })
 map("n", "<leader>bd", "<cmd>bn<cr><cmd>bd #<cr>", { desc = "Delete current buffer and keep the window" })
 map("n", "<leader>bl", "<cmd>ls<cr>", { desc = "list buffers" })
 
+-- quickfix
+map("n", "<leader>cn", "<cmd>cn<cr>", { desc = "switch to next quickfix item" })
+map("n", "<leader>cp", "<cmd>cp<cr>", { desc = "switch to previous quickfix item" })
+
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
