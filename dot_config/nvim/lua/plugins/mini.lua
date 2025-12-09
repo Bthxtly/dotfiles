@@ -38,6 +38,21 @@ return {
   },
 
   {
+    "nvim-mini/mini.cmdline",
+    opts = {
+      autocomplete = {
+        enable = false,
+      },
+      autocorrect = {
+        enable = true,
+      },
+      autopeek = {
+        enable = true,
+      },
+    },
+  },
+
+  {
     "echasnovski/mini.notify",
     enabled = false,
     config = function()
