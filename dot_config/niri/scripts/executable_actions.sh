@@ -32,6 +32,13 @@ toggle_theme() {
   ~/.config/niri/scripts/switcher.sh
 }
 
+toggle_opacity() {
+  for id in $(niri msg -j windows | jq '.[].id'); do
+    niri msg action toggle-window-rule-opacity --id "$id"
+  done
+
+}
+
 edit_screenshot() {
   TMP_SCREENSHOT=/tmp/screenshot
   niri msg action screenshot-screen --path $TMP_SCREENSHOT
@@ -77,7 +84,8 @@ weather='Show weather'
 wallpaper='Show wallpaper'
 suspend='Suspend'
 theme='Toggle light/dark theme'
-choices="$point\n$area\n$screenshot\n$theme\n$media\n$overview\n$weather\n$wallpaper\n$suspend\nTime\nUptime"
+opacity='Toggle all windows opacity'
+choices="$point\n$area\n$screenshot\n$theme\n$opacity\n$media\n$overview\n$weather\n$wallpaper\n$suspend\nTime\nUptime"
 
 selected=$(echo -e "$choices" | rofi -i -dmenu -p "Choose an action")
 
@@ -87,6 +95,7 @@ $point) get_point ;;
 $area) get_area ;;
 $screenshot) edit_screenshot ;;
 $theme) toggle_theme ;;
+$opacity) toggle_opacity ;;
 $media) show_media ;;
 $overview) show_overview ;;
 $weather) show_weather ;;
