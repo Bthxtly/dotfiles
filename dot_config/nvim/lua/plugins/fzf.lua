@@ -28,6 +28,7 @@ return {
           ["ctrl-f"] = "half-page-down",
           ["ctrl-b"] = "half-page-up",
           ["ctrl-x"] = "jump",
+          ["ctrl-a"] = "select-all+accept", -- send all of the results to the quickfix list
         },
         builtin = {
           ["<c-d>"] = "preview-page-down",
