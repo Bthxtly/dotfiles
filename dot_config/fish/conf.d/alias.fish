@@ -40,6 +40,7 @@ alias 'q=exit'
 # git
 alias 'ga=git add'
 alias 'gaa=git add --all'
+alias 'gb=git branch'
 alias 'gc=git commit -m'
 alias 'gk=git checkout'
 alias 'gu=git commit -m "update"'
