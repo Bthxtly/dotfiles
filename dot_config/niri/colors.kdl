@@ -27,6 +27,7 @@ layout {
   }
 }
 
+// Make the backdrop light.
 overview {
   backdrop-color "#FAF4ED"
 }

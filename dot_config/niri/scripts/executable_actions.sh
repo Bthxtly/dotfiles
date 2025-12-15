@@ -36,7 +36,6 @@ toggle_opacity() {
   for id in $(niri msg -j windows | jq '.[].id'); do
     niri msg action toggle-window-rule-opacity --id "$id"
   done
-
 }
 
 edit_screenshot() {

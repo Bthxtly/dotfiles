@@ -62,7 +62,22 @@ input {
 } // }}}
 
 // Output {{{
-include "output.kdl"
+output "eDP-1" {
+  off
+  mode "2560x1440@240.000"
+  scale 1.6
+  transform "normal"
+  // under the external monitor
+  position x=0 y=1152
+  variable-refresh-rate
+}
+
+output "DP-1" {
+  mode "2560x1440@180.000"
+  scale 1.25
+  transform "normal"
+  position x=0 y=0
+}
 // }}}
 
 // // Cursor {{{
@@ -288,11 +303,6 @@ window-rule {
 //     match namespace="^swww-daemonoverview$"
 //     place-within-backdrop true
 // }
-
-// Make the backdrop light.
-overview {
-  backdrop-color "#FAF4ED"
-}
 
 // appearance
 include "colors.kdl"

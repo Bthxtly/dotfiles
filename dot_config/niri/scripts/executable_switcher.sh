@@ -3,18 +3,25 @@
 # get the current theme
 theme=$(dms ipc theme getMode)
 
+niri_colors=~/.config/niri/colors.kdl
+backdrop_color_line=$(awk '$1 == "backdrop-color" {print NR}' $niri_colors)
 # Check the value of $theme and do the proper sed {{{
 if [[ "$theme" == "light" ]]; then
   mode="1 s/light/dark/"
+  niri_color_mode="$backdrop_color_line s/FAF4ED/232136/"
 elif [[ "$theme" == "dark" ]]; then
   mode="1 s/dark/light/"
+  niri_color_mode="$backdrop_color_line s/232136/FAF4ED/"
 
   # fix gtk-css issue with zathura
-  gtk3_path="~/.config/gtk-3.0"
+  gtk3_path=~/.config/gtk-3.0
   awk 'NR<5 || NR >7803 {print $0}' "$gtk3_path"/gtk.css >/tmp/gtk.css
   mv /tmp/gtk.css "$gtk3_path"/gtk.css
 fi
 
+# niri
+echo "$niri_color_mode"
+sed -i "$niri_color_mode" ~/.config/niri/colors.kdl
 # nvim
 sed -i "$mode" ~/.config/nvim/current_theme.vim
 # kitty
