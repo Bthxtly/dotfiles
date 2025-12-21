@@ -8,9 +8,11 @@ backdrop_color_line=$(awk '$1 == "backdrop-color" {print NR}' $niri_colors)
 # Check the value of $theme and do the proper sed {{{
 if [[ "$theme" == "light" ]]; then
   mode="1 s/light/dark/"
+  spicetify_mode="10 s/dawn/moon/"
   niri_color_mode="$backdrop_color_line s/FAF4ED/232136/"
 elif [[ "$theme" == "dark" ]]; then
   mode="1 s/dark/light/"
+  spicetify_mode="10 s/moon/dawn/"
   niri_color_mode="$backdrop_color_line s/232136/FAF4ED/"
 
   # fix gtk-css issue with zathura
@@ -20,8 +22,9 @@ elif [[ "$theme" == "dark" ]]; then
 fi
 
 # niri
-echo "$niri_color_mode"
 sed -i "$niri_color_mode" ~/.config/niri/colors.kdl
+# spotify
+sed -i "$spicetify_mode" ~/.config/spicetify/config-xpui.ini
 # nvim
 sed -i "$mode" ~/.config/nvim/current_theme.vim
 # kitty
@@ -68,6 +71,18 @@ for socket in $nvim_sockets; do
       '<C-\><C-N>:source $HOME/.config/nvim/current_theme.vim<CR>:<ESC>' >/dev/null &
   fi
 done
+# }}}
+
+# apply spicetify and restart spotify {{{
+spicetify apply -n
+playing_status=$(playerctl status -p spotify)
+killall spotify
+sleep 2
+env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
+sleep 4
+if [[ $playing_status == "Playing" ]]; then
+  playerctl play -p spotify
+fi
 # }}}
 
 # vim:foldmethod=marker:foldlevel=0
