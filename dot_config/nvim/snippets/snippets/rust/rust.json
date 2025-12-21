@@ -317,6 +317,8 @@
     "body": [
       "#[cfg(test)]",
       "mod test {",
+      "    use super::*;",
+      "",
       "    #[test]",
       "    fn ${1:name}() {",
       "        ${2:todo!();}",
@@ -369,6 +371,16 @@
     ],
     "description": "panic!(…);",
     "prefix": "panic"
+  },
+  "penum": {
+    "body": [
+      "#[derive(Debug)]",
+      "pub enum $1 {",
+      "  $2",
+      "}",
+      "$0"
+    ],
+    "prefix": "penum"
   },
   "pfn": {
     "body": [
