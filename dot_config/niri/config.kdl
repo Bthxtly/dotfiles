@@ -226,31 +226,10 @@ animations {
 // Window rules {{{
 // https://yalter.github.io/niri/Configuration:-Window-Rules
 
-// Open the Firefox picture-in-picture player as floating by default.
-window-rule {
-  // This app-id regular expression will work for both:
-  // - host Firefox (app-id is "firefox")
-  // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-  open-floating true
-}
-
 // Open the Spotify lyrics as floating by default.
 window-rule {
   match app-id=r#""# title="^Picture in picture$"
   open-floating true
-}
-
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-window-rule {
-  match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-  match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-  block-out-from "screen-capture"
-
-  // Use this instead if you want them visible on third-party screenshot tools.
-  // block-out-from "screencast"
 }
 
 // Example: enable rounded corners for all windows.
@@ -281,7 +260,7 @@ window-rule {
 // maximize falsh browser
 window-rule {
   match app-id="Flash Browser"
-  open-maximized true
+  default-column-width { proportion 0.8; }
 }
 
 // open Zen at `browser` workspace
@@ -292,8 +271,9 @@ window-rule {
 
 // open Spotify at `music` workspace
 window-rule {
-    match at-startup=true app-id="spotify"
+    match app-id="spotify"
     open-on-workspace "music"
+    open-maximized true
 }
 
 // }}}
