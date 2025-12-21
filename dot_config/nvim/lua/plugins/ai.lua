@@ -7,6 +7,7 @@ return {
     version = "v17.33.0",
     lazy = true,
     cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionCmd", "CodeCompanionActions" },
+    opts = {},
     dependencies = {
       { "nvim-lua/plenary.nvim", branch = "master" },
       { "zbirenbaum/copilot.lua" },

@@ -39,6 +39,7 @@ return {
 
   {
     "nvim-mini/mini.cmdline",
+    enabled = true,
     opts = {
       autocomplete = {
         enable = false,

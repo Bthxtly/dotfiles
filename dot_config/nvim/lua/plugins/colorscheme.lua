@@ -71,7 +71,7 @@ return {
           ["@function.call"] = { fg = "iris", italic = true },
 
           ["@variable.builtin"] = { fg = "gold", bold = false },
-          ["@variable.parameter"] = { bg = "iris", blend = 15 },
+          ["@variable.parameter.rust"] = { bg = "iris", blend = 15 },
           ["@operator.rust"] = { fg = "pine" },
         },
       })
