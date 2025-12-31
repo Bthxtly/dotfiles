@@ -378,7 +378,6 @@ binds {
   XF86AudioMicMute allow-when-locked=true {
     spawn "dms" "ipc" "call" "audio" "micmute";
   }
-  // You can override the default device for e.g. keyboards by adding the device name to the last param
   XF86MonBrightnessUp allow-when-locked=true {
     spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
   }

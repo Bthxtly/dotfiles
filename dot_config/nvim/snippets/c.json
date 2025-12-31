@@ -290,6 +290,14 @@
     "description": "'for' loop focusing on inclusive range",
     "prefix": "forg"
   },
+  "fori": {
+    "body": [
+      "for (size_t ${2:i} = 0; $2 < ${1:count}; ++$2) {",
+      "  $3",
+      "}"
+    ],
+    "prefix": "fori"
+  },
   "fprintf": {
     "body": [
       "fprintf(${1:stderr}, \"${2:%s}\\n\"$3)$0"
@@ -413,6 +421,10 @@
     ],
     "description": "Error checking for malloc()-like",
     "prefix": "chkmem"
+  },
+  "new": {
+    "body": "${1:Type} *${2:name} = ($1 *)malloc(sizeof($1));",
+    "prefix": "new"
   },
   "printf": {
     "body": [
