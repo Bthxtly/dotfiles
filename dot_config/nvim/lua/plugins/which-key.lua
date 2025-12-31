@@ -16,6 +16,7 @@ return {
         { "<leader>s", group = "search" },
         { "<leader>t", group = "tab" },
         { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+        { "<leader>w", group = "window(hydra)", icon = { icon = "󰙵 ", color = "cyan" } },
         { "<leader>x", group = "diagnostics", icon = { icon = "󱖫 ", color = "green" } },
         { "z", group = "fold" },
         {
@@ -23,14 +24,6 @@ return {
           group = "buffer",
           expand = function()
             return require("which-key.extras").expand.buf()
-          end,
-        },
-        {
-          "<leader>w",
-          group = "windows",
-          proxy = "<c-w>",
-          expand = function()
-            return require("which-key.extras").expand.win()
           end,
         },
       },
