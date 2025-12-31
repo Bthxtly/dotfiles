@@ -186,7 +186,9 @@ filextype {*.djvu},<image/vnd.djvu>
 filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
         \<audio/*>
        \ {Play using ffplay}
-       \ ffplay -autoexit %c,
+       \ mpv %c,
+       " \ {Play using ffplay}
+       " \ ffplay -autoexit %c,
        " \ {Play using MPlayer}
        " \ vlc %f
 fileviewer {*.mp3,*.m4a},<audio/mpeg> ffprobe -pretty %c 2>&1
