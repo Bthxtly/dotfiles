@@ -8,7 +8,6 @@ return {
       { "<leader>ht", '<cmd>lua require("nvim-highlight-colors").toggle()<cr>', silent = true, desc = "Toggle color" },
     },
   },
-  { "ap/vim-css-color", event = "VeryLazy" },
   { "kmonad/kmonad-vim", lazy = true, ft = "kbd" },
   { "fladson/vim-kitty", lazy = true, ft = "kitty" },
 }
