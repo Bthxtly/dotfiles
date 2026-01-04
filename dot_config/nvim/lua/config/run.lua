@@ -57,7 +57,7 @@ function CompileRunGcc()
 
   -- Markdown and Typst
   if ft == "markdown" or ft == "vimwiki" then
-    vim.cmd("Markview toggle")
+    vim.cmd("MarkdownPreview")
     return
   elseif ft == "typst" then
     vim.cmd("TypstPreview")
