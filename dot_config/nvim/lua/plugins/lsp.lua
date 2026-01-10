@@ -105,9 +105,6 @@ return {
         },
       })
 
-      -- rust
-      vim.lsp.enable("rust_analyzer")
-
       -- c/c++
       vim.lsp.enable("clangd")
 
