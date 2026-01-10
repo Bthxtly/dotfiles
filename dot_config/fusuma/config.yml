@@ -1,0 +1,63 @@
+swipe:
+  4:
+    right:
+      sendkey: "VOLUMEUP"         # volume up
+    left:
+      sendkey: "VOLUMEDOWN"       # volume down
+    down:
+      sendkey: "GRAVE"            # Escape
+
+pinch:
+  4:
+    in:
+      sendkey: "RIGHTCTRL+MINUS"  # zoom in the browser page
+    out:
+      sendkey: "RIGHTCTRL+EQUAL"  # zoom out the browser page
+
+# rotate:
+#   3:
+#     clockwise:
+#       command: "hyprctl keyword monitor eDP-1,preferred,auto,auto,transform,0" # rotate vertical
+#     counterclockwise:
+#       command: "hyprctl keyword monitor eDP-1,preferred,auto,auto,transform,0" # rotate vertical
+#   4:
+#     clockwise:
+#       command: "hyprctl keyword monitor eDP-1,preferred,auto,auto,transform,3" # rotate clockwise
+#     counterclockwise:
+#       command: "hyprctl keyword monitor eDP-1,preferred,auto,auto,transform,1" # rotate counterclockwise
+
+hold:
+  4:
+    command: "niri msg action maximize-column"  # toggle fullscreen
+  3:
+    sendkey: "RIGHTCTRL+W"      # close the browser page
+
+threshold:
+  swipe: 0.8
+  pinch: 0.5
+  rotate: 0.5
+  hold: 0.3
+
+# swipe:
+#
+#     support 3:, 4: fingers
+#     support left:, right:, up:, down: directions
+#     support begin:, update:, end: events
+#
+# pinch:
+#
+#     support 2:, 3:, 4: fingers
+#     support in:, out: directions
+#     support begin:, update:, end: events
+#
+# rotate:
+#
+#     support 2:, 3:, 4: fingers
+#     support clockwise:,counterclockwise: directions
+#     support begin:, update:, end: events
+#
+# hold:
+#
+#     require libinput version 1.19.0 or later
+#     support 1:, 2:, 3:, 4: fingers
+#     support begin:, end:, cancelled: events
