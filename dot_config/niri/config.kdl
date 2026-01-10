@@ -62,7 +62,7 @@ output "DP-1" {
 // Gesture {{{
 gestures {
   hot-corners {
-    top-right
+    off
   }
 } // }}}
 
