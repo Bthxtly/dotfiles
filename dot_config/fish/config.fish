@@ -2,13 +2,13 @@ if status is-interactive
     # shell integrations
     fzf --fish | source
     zoxide init fish | source
-    {{- if eq .chezmoi.os "linux" }}
     thefuck --alias | source
     niri completions fish | source
-    {{- end }}
 
     # clear greeting message
     set -U fish_greeting
+
+    set --global fish_key_bindings fish_default_key_bindings
 
     # # display a randomly selected tldr page
     # tldr --quiet $(tldr --quiet --list | shuf -n1)
