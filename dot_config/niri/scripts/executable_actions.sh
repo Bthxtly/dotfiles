@@ -33,9 +33,8 @@ toggle_theme() {
 }
 
 toggle_opacity() {
-  for id in $(niri msg -j windows | jq '.[].id'); do
-    niri msg action toggle-window-rule-opacity --id "$id"
-  done
+  id=$(niri msg -j focused-window | jq '.id')
+  niri msg action toggle-window-rule-opacity --id "$id"
 }
 
 edit_screenshot() {
@@ -83,7 +82,7 @@ weather='Show weather'
 wallpaper='Show wallpaper'
 suspend='Suspend'
 theme='Toggle light/dark theme'
-opacity='Toggle all windows opacity'
+opacity='Toggle focused windows opacity'
 choices="$point\n$area\n$screenshot\n$theme\n$opacity\n$media\n$overview\n$weather\n$wallpaper\n$suspend\nTime\nUptime"
 
 selected=$(echo -e "$choices" | rofi -i -dmenu -p "Choose an action")
