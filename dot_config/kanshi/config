@@ -1,0 +1,19 @@
+profile dormitory {
+  output eDP-1 disable
+
+  output DP-1 {
+    enable
+      mode 2560x1440@180.000Hz
+      scale 1.25
+      position 0,0
+  }
+}
+
+profile solo {
+  output eDP-1 {
+    enable
+      mode 2560x1440@240.000Hz
+      scale 1.6
+      position 0,0
+  }
+}
