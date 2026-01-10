@@ -74,8 +74,8 @@ done
 # }}}
 
 # apply spicetify and restart spotify {{{
-spicetify apply -n
 playing_status=$(playerctl status -p spotify)
+spicetify apply -n
 killall spotify
 sleep 2
 env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --enable-features=UseOzonePlatform --ozone-platform=wayland

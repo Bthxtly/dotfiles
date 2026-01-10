@@ -3,7 +3,6 @@ local language = {
   "c",
   "cpp",
   "json",
-  "jsonc",
   "lua",
   "markdown",
   "markdown_inline",
