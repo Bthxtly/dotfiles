@@ -1,9 +1,14 @@
+DankMaterialShell
 fish
+fusuma
+kanshi
 kitty
 kmonad
 niri
 nvim
+rime
 rofi
+swayimg
 vifm
 zathura
 
