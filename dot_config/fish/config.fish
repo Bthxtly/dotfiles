@@ -1,4 +1,8 @@
 if status is-interactive
+    if test (tty) = /dev/tty1
+        exec niri-session
+    end
+
     # shell integrations
     fzf --fish | source
     zoxide init fish | source
