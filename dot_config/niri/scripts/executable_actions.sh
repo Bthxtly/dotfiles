@@ -64,6 +64,18 @@ suspend_sys() {
   systemctl suspend
 }
 
+shutdown_sys() {
+  shutdown now
+}
+
+reboot_sys() {
+  reboot
+}
+
+hibernate_sys() {
+  systemctl hibernate
+}
+
 time_now() {
   notify-send "Current Time" "$(date '+%Y-%m-%d %H:%M:%S')"
 }
@@ -81,9 +93,12 @@ overview='Show overview'
 weather='Show weather'
 wallpaper='Show wallpaper'
 suspend='Suspend'
+shutdown='Shutdown'
+reboot='Reboot'
+hibernate='Hibernate'
 theme='Toggle light/dark theme'
 opacity='Toggle focused windows opacity'
-choices="$point\n$area\n$screenshot\n$theme\n$opacity\n$media\n$overview\n$weather\n$wallpaper\n$suspend\nTime\nUptime"
+choices="$point\n$area\n$screenshot\n$theme\n$opacity\n$media\n$overview\n$weather\n$wallpaper\n$suspend\n$shutdown\n$reboot\n$hibernate\nTime\nUptime"
 
 selected=$(echo -e "$choices" | rofi -i -dmenu -p "Choose an action")
 
@@ -99,6 +114,9 @@ $overview) show_overview ;;
 $weather) show_weather ;;
 $wallpaper) show_wallpaper ;;
 $suspend) suspend_sys ;;
+$shutdown) shutdown_sys ;;
+$reboot) reboot_sys ;;
+$hibernate) hibernate_sys ;;
 "Time") time_now ;;
 "Uptime") uptime_info ;;
 *) exit 0 ;;
