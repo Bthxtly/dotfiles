@@ -37,9 +37,9 @@
   "showControlCenterButton": true,
   "showCapsLockIndicator": true,
   "controlCenterShowNetworkIcon": true,
-  "controlCenterShowBluetoothIcon": true,
-  "controlCenterShowAudioIcon": true,
-  "controlCenterShowVpnIcon": true,
+  "controlCenterShowBluetoothIcon": false,
+  "controlCenterShowAudioIcon": false,
+  "controlCenterShowVpnIcon": false,
   "controlCenterShowBrightnessIcon": false,
   "controlCenterShowMicIcon": false,
   "controlCenterShowBatteryIcon": false,
@@ -286,11 +286,13 @@
       "centerWidgets": [
         {
           "id": "music",
-          "enabled": true
+          "enabled": true,
+          "mediaSize": 1
         },
         {
           "id": "clock",
-          "enabled": true
+          "enabled": true,
+          "clockCompactMode": false
         },
         {
           "id": "weather",
@@ -308,11 +310,14 @@
         },
         {
           "id": "cpuUsage",
-          "enabled": true
+          "enabled": true,
+          "minimumWidth": true
         },
         {
           "id": "memUsage",
-          "enabled": true
+          "enabled": true,
+          "minimumWidth": true,
+          "showSwap": false
         },
         {
           "id": "battery",
