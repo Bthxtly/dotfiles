@@ -47,6 +47,7 @@ alias 'gu=git commit -m "update"'
 alias 'gr=git rebase'
 alias 'guu=git add --all && git commit -m "update" && git push'
 alias 'gla=git log --all --decorate --oneline --graph'
+alias 'glah=git log --all --decorate --oneline --graph --color | head'
 
 # [neo]vim
 alias 'n=nvim ~/.config/niri/config.kdl'
