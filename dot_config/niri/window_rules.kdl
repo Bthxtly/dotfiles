@@ -1,0 +1,65 @@
+// https://yalter.github.io/niri/Configuration:-Window-Rules
+
+// enable rounded corners for all windows. {{{
+window-rule {
+  geometry-corner-radius 10
+  clip-to-geometry true
+}
+// }}}
+
+// set transparency {{{
+window-rule {
+  match app-id="kitty" is-focused=true
+  match app-id="neovide" is-focused=true
+  match app-id="com.mitchellh.ghostty" is-focused=true
+  match app-id="zathura" is-focused=true
+
+  opacity 0.85
+}
+
+window-rule {
+  match app-id="kitty" is-focused=false
+  match app-id="neovide" is-focused=false
+  match app-id="com.mitchellh.ghostty" is-focused=false
+  match app-id="zathura" is-focused=false
+
+  opacity 0.70
+}
+// }}}
+
+// maximize falsh browser {{{
+window-rule {
+  match app-id="Flash Browser"
+  default-column-width { proportion 0.8; }
+}
+// }}}
+
+// open Zen at `browser` workspace {{{
+window-rule {
+    match at-startup=true app-id="zen-browser"
+    open-on-workspace "browser"
+}
+// }}}
+
+// open Spotify at `music` workspace {{{
+window-rule {
+    match app-id="spotify"
+    open-on-workspace "music"
+    open-maximized true
+}
+// }}}
+
+// open the Spotify lyrics as floating by default, and {{{
+// put it at a comfortable place
+window-rule {
+  match app-id=r#""# title="^Picture in picture$"
+  open-floating true
+
+  default-column-width { fixed 300; }
+  default-window-height { fixed 225; }
+
+  default-floating-position x=1240 y=628
+}
+// }}}
+
+// vim:fdm=marker:fdl=0
