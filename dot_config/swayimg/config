@@ -20,13 +20,10 @@ preload = 1
 [gallery]
 size = 200
 cache = 100
-fill = no
 antialiasing = none
 window = #111111
 background = #111111
 select = #005577
-border = #005577
-shadow = #000000ff
 
 [list]
 order = alpha
@@ -90,7 +87,6 @@ z = zoom fit
 f = zoom fill
 0 = zoom real
 BackSpace = zoom optimal
-Alt+s = scale
 r = rotate_left
 R = rand_file
 Ctrl +r = rotate_right
