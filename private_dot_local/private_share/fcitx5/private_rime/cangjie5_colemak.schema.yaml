@@ -13,7 +13,7 @@ schema:
     碼表源自倉頡之友發佈的《五倉世紀版》
     www.chinesecj.com
   dependencies:
-    - luna_quanpin
+    - double_pinyin
 
 switches:
   - name: ascii_mode
