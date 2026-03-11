@@ -6,7 +6,6 @@ if status is-interactive
     # shell integrations
     fzf --fish | source
     zoxide init fish | source
-    thefuck --alias | source
     niri completions fish | source
 
     # clear greeting message
