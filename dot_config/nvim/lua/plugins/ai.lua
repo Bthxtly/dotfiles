@@ -23,10 +23,10 @@ return {
       suggestion = { enabled = false },
       panel = { enabled = false },
       filetypes = {
-        python = true,
-        c = true,
-        cpp = true,
-        rust = true,
+        -- python = true,
+        -- c = true,
+        -- cpp = true,
+        -- rust = true,
         ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
       },
     },
