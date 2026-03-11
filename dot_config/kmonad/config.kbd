@@ -38,7 +38,7 @@
 #| -----------------------------Layer--------------------------------------- |#
 ;; layer colemak layout
 (deflayer colemak
-  caps
+  esc
   esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    f    p    g    j    l    u    y    ;    bspc esc  \
   lctl a    r    s    t    d    h    n    e    i    o    @qte ret
