@@ -63,7 +63,7 @@ output "DP-1" {
 // Gesture {{{
 gestures {
   hot-corners {
-    off
+    top-right
   }
 } // }}}
 
@@ -340,6 +340,11 @@ binds {
 
   // My scripts {{{2
   Mod+I { spawn-sh "pkill rofi || ~/.config/niri/scripts/actions.sh"; }
+  //}}}
+
+  // Mouse {{{2
+  MouseForward { focus-column-left; }
+  MouseBack    { focus-column-right; }
   //}}}
 } // }}}
 
