@@ -20,3 +20,5 @@ for ab, type in pairs(abbr) do
 end
 
 vim.cmd("iabbr ;; ::")
+
+vim.keymap.set("n", "<leader>rr", "<cmd>RustTest<cr>")
