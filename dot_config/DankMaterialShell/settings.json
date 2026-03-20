@@ -26,7 +26,7 @@
   "showSeconds": false,
   "padHours12Hour": false,
   "useFahrenheit": false,
-  "windSpeedUnit": "kmh",
+  "windSpeedUnit": "ms",
   "nightModeEnabled": false,
   "animationSpeed": 2,
   "customAnimationDuration": 500,
@@ -630,6 +630,12 @@
           "height": 200,
           "x": 924,
           "y": 476
+        },
+        "": {
+          "width": 120,
+          "height": 120,
+          "x": 0,
+          "y": 0
         }
       }
     },
@@ -677,6 +683,12 @@
           "height": 480,
           "x": 189.296875,
           "y": 60.375
+        },
+        "": {
+          "width": 160,
+          "height": 180,
+          "x": 0,
+          "y": 0
         }
       }
     }
