@@ -73,16 +73,16 @@ for socket in $nvim_sockets; do
 done
 # }}}
 
-# apply spicetify and restart spotify {{{
-playing_status=$(playerctl status -p spotify)
-spicetify apply -n
-killall spotify
-sleep 2
-env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
-sleep 4
-if [[ $playing_status == "Playing" ]]; then
-  playerctl play -p spotify
-fi
-# }}}
+# # apply spicetify and restart spotify {{{
+# playing_status=$(playerctl status -p spotify)
+# spicetify apply -n
+# killall spotify
+# sleep 2
+# env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
+# sleep 4
+# if [[ $playing_status == "Playing" ]]; then
+#   playerctl play -p spotify
+# fi
+# # }}}
 
 # vim:foldmethod=marker:foldlevel=0
