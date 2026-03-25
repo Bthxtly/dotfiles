@@ -13,6 +13,7 @@ alias 'lg=lazygit'
 alias 'nv=clear && nvidia-smi'
 alias 'sd=unset all_proxy ALL_PROXY && ~/Applications/stable-diffusion-webui/webui.sh'
 alias 'si=swayimg'
+alias 'xi=xargs -I{}'
 
 alias 'fly=cd && cd $(fd --hidden --type directory | fzf --preview "ls {}")'
 
@@ -50,7 +51,7 @@ alias 'gla=git log --all --decorate --oneline --graph'
 alias 'glah=git log --all --decorate --oneline --graph --color | head'
 
 # [neo]vim
-alias 'n=nvim ~/.config/niri/config.kdl'
+alias 'n=nvim ~/.config/niri/config.kdl -c "cd ~/.config/niri/"'
 alias 'k=nvim ~/.config/kitty/kitty.conf'
 alias 'lc=nvim leetcode.nvim'
 alias 't=nvim ~/Documents/VimWiki/TODO.md'
