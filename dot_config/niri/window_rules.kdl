@@ -43,7 +43,7 @@ window-rule {
 
 // open Spotify at `music` workspace {{{
 window-rule {
-    match app-id="spotify"
+    match app-id="Spotify"
     open-on-workspace "music"
     open-maximized true
 }
@@ -61,5 +61,14 @@ window-rule {
   default-floating-position x=1240 y=628
 }
 // }}}
+
+// make goldendict float {{{
+window-rule{
+  match app-id=r#"^io.github.xiaoyifang.goldendict_ng$"#
+  open-floating true
+
+  default-window-height { fixed 600; }
+}
+//}}}
 
 // vim:fdm=marker:fdl=0
