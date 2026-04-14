@@ -45,7 +45,7 @@ return {
         enable = false,
       },
       autocorrect = {
-        enable = true,
+        enable = false,
       },
       autopeek = {
         enable = true,
