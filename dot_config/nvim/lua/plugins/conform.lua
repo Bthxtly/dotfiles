@@ -28,6 +28,7 @@ return {
       cpp = { "clang-format" },
       java = { "clang-format" },
       typst = { "typstyle" },
+      sql = { "pg_format" },
     },
     -- The options you set here will be merged with the builtin formatters.
     -- You can also define any custom formatters here.
