@@ -649,6 +649,18 @@
       {
         "language": "zig",
         "path": "./snippets/zig.json"
+      },
+      {
+        "language": [
+          "asm"
+        ],
+        "path": "./asm.json"
+      },
+      {
+        "language": [
+          "kdl"
+        ],
+        "path": "./kdl.json"
       }
     ]
   },

@@ -1,0 +1,30 @@
+{
+  "pchi": {
+    "body": [
+      "li a1, $1",
+      "jal print_char$0"
+    ],
+    "prefix": "pchi"
+  },
+  "pint": {
+    "body": [
+      "mv a1, $1",
+      "jal print_int$0"
+    ],
+    "prefix": "pint"
+  },
+  "pinti": {
+    "body": [
+      "li a1, $1",
+      "jal print_int$0"
+    ],
+    "prefix": "pinti"
+  },
+  "pstr": {
+    "body": [
+      "mv a1, $1",
+      "jal print_str$0"
+    ],
+    "prefix": "pstr"
+  }
+}
