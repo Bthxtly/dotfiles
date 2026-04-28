@@ -292,7 +292,7 @@
   "soundVolumeChanged": false,
   "soundPluggedIn": true,
   "acMonitorTimeout": 900,
-  "acLockTimeout": 600,
+  "acLockTimeout": 300,
   "acSuspendTimeout": 1800,
   "acSuspendBehavior": 0,
   "acProfileName": "",
@@ -713,7 +713,7 @@
       "trigger": "?"
     }
   },
-  "clipboardEnterToPaste": true,
+  "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {
     "dms_settings_search": {
       "allowWithoutTrigger": true

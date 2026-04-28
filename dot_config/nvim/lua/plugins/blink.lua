@@ -108,7 +108,6 @@ return {
     lazy = true,
     opts = {
       snippetDir = snippet_dir,
-      jsonFormatter = "jq",
     },
     keys = {
       {
