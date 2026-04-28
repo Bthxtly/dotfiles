@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local language = {
   "bash",
   "c",
@@ -11,6 +12,18 @@ local language = {
   "vim",
   "vimdoc",
 }
+
+vim.treesitter.language.register("riscv", { "asm" })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TSUpdate",
+  callback = function()
+    require("nvim-treesitter.parsers").riscv = {
+      install_info = {
+        url = "https://github.com/omeyenburg/tree-sitter-riscv",
+      },
+    }
+  end,
+})
 
 local function textobj_move(char, obj, desc)
   local move = require("nvim-treesitter-textobjects.move")
