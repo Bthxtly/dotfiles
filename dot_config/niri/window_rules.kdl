@@ -15,6 +15,9 @@ window-rule {
   match app-id="zathura" is-focused=true
 
   opacity 0.85
+  background-effect {
+    blur true
+  }
 }
 
 window-rule {
@@ -24,8 +27,21 @@ window-rule {
   match app-id="zathura" is-focused=false
 
   opacity 0.70
+  background-effect {
+    blur true
+  }
 }
 // }}}
+
+// blur zen {{{
+window-rule {
+  match app-id="zen-browser"
+
+  background-effect{
+    blur true
+  }
+}
+//}}}
 
 // maximize falsh browser {{{
 window-rule {
@@ -43,7 +59,7 @@ window-rule {
 
 // open Spotify at `music` workspace {{{
 window-rule {
-    match app-id="Spotify"
+    match app-id="spotify"
     open-on-workspace "music"
     open-maximized true
 }

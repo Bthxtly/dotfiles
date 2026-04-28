@@ -135,6 +135,15 @@ layout {
   }
 } // }}}
 
+// Blur {{{
+blur {
+  passes 3
+  offset 1
+  noise 0.02
+  saturation 1.5
+}
+//}}}
+
 // Animations {{{
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
