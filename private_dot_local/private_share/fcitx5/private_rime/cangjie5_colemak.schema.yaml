@@ -48,6 +48,7 @@ engine:
     - punct_translator
     - reverse_lookup_translator
     - table_translator
+    - table_translator@custom_phrase
   filters:
     - simplifier
     - uniquifier
@@ -74,13 +75,21 @@ translator:
     - "^z.*$"
     - "^yyy.*$"
 
+custom_phrase:
+  dictionary: ""
+  user_dict: custom_phrase
+  db_class: stabledb
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 1
+
 abc_segmentor:
   extra_tags:
     - reverse_lookup  # 與拼音（反查碼）混打
 
 reverse_lookup:
   dictionary: luna_pinyin
-  prefix: "`"
+  prefix: "'"
   suffix: "'"
   comment_format:
     - "xlit|abcsftdhuneimkyoqprglvwxjz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
@@ -102,4 +111,4 @@ recognizer:
   import_preset: default
   patterns:
     punct: '^/([0-9]0?|[A-Za-z]+)$'
-    reverse_lookup: "`[a-z]*'?$|[a-z]+'$"
+    reverse_lookup: "'[a-z]*'?$|[a-z]+'$"
