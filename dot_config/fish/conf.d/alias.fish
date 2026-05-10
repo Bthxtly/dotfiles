@@ -14,6 +14,7 @@ alias 'nv=clear && nvidia-smi'
 alias 'sd=unset all_proxy ALL_PROXY && ~/Applications/stable-diffusion-webui/webui.sh'
 alias 'si=swayimg'
 alias 'xi=xargs -I{}'
+alias 'lo=libreoffice'
 
 alias 'fly=cd && cd $(fd --hidden --type directory | fzf --preview "ls {}")'
 
