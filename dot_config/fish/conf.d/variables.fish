@@ -18,7 +18,7 @@ set -x SDL_VIDEODRIVER wayland
 set -x MANPAGER "bat -plman"
 
 # set go path
-set -x GOPATH $HOME/Applications/go
+set -x GOPATH $HOME/Miscellaneous/go
 
 # less UTF-8 supports
 set -x LESSCHARSET utf-8
