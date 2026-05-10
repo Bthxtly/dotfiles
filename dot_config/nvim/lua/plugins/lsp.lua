@@ -46,9 +46,6 @@ return {
     config = function()
       vim.lsp.inlay_hint.enable(true)
 
-      -- make lsp highlight lower priority than treesitter
-      vim.highlight.priorities.semantic_tokens = 95
-
       -- lua_ls
       vim.lsp.enable("lua_ls")
       vim.lsp.config("lua_ls", {
