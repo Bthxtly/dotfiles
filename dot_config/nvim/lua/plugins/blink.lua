@@ -7,12 +7,16 @@ return {
     dependencies = {
       -- "milanglacier/minuet-ai.nvim",
       "fang2hou/blink-copilot",
+      "saghen/blink.lib",
     },
-    -- version = "*",
-    build = "cargo build --release",
+    build = function()
+      require("blink.cmp").build():wait(60000)
+    end,
     lazy = true,
     event = { "InsertEnter", "CmdlineEnter" },
 
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
       snippets = { preset = "luasnip" },
       sources = {
