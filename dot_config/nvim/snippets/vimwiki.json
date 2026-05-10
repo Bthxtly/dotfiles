@@ -299,7 +299,7 @@
   },
   "Insert code block": {
     "body": [
-      "```${1:language}",
+      "```${1}",
       "$0",
       "```"
     ],
