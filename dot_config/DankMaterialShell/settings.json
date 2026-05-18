@@ -314,7 +314,10 @@
   "launchPrefix": "",
   "brightnessDevicePins": {},
   "wifiNetworkPins": {
-    "preferredWifi": "Phone"
+    "preferredWifi": [
+      "4310tplink",
+      "Phone"
+    ]
   },
   "bluetoothDevicePins": {},
   "audioInputDevicePins": {},
@@ -523,6 +526,10 @@
           "enabled": true
         },
         {
+          "id": "idleInhibitor",
+          "enabled": true
+        },
+        {
           "id": "controlCenterButton",
           "enabled": true
         }
@@ -649,8 +656,8 @@
         "DP-1": {
           "width": 200,
           "height": 200,
-          "x": 924,
-          "y": 476
+          "x": 1721,
+          "y": 60.00390625
         },
         "": {
           "width": 120,
