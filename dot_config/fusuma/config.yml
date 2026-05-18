@@ -5,7 +5,8 @@ swipe:
     left:
       sendkey: "VOLUMEDOWN"       # volume down
     down:
-      sendkey: "GRAVE"            # Escape
+      # sendkey: "GRAVE"            # Escape
+      sendkey: "RIGHTCTRL+W"      # close the browser page
 
 pinch:
   4:
@@ -29,8 +30,8 @@ pinch:
 hold:
   4:
     command: "niri msg action maximize-column"  # toggle fullscreen
-  3:
-    sendkey: "RIGHTCTRL+W"      # close the browser page
+  # 3:
+  #   sendkey: "RIGHTCTRL+W"      # close the browser page
 
 threshold:
   swipe: 0.8
