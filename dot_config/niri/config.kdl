@@ -64,6 +64,11 @@ gestures {
   hot-corners {
     top-right
   }
+
+  // only works on my own fork
+  overview-toggle-direction {
+    vertical
+  }
 } // }}}
 
 // Switch Events {{{
