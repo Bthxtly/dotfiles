@@ -25,3 +25,6 @@ set -x LESSCHARSET utf-8
 
 # run gvim in wayland
 set -x GVIM_ENABLE_WAYLAND 1
+
+# set proper Android SKD direction
+set -x ANDROID_HOME $HOME/Miscellaneous/Android/
