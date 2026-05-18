@@ -37,6 +37,10 @@ toggle_opacity() {
   niri msg action toggle-window-rule-opacity --id "$id"
 }
 
+power_off_monitors() {
+  niri msg action power-off-monitors
+}
+
 edit_screenshot() {
   TMP_SCREENSHOT=/tmp/screenshot
   niri msg action screenshot-screen --path $TMP_SCREENSHOT
@@ -87,6 +91,7 @@ uptime_info() {
 # --- Menu via rofi ---
 point='Get point position'
 area='Get area position'
+monitor='Turn off monitors'
 screenshot='Edit screenshot'
 media='Show current media'
 overview='Show overview'
@@ -98,7 +103,7 @@ reboot='Reboot'
 hibernate='Hibernate'
 theme='Toggle light/dark theme'
 opacity='Toggle focused windows opacity'
-choices="$point\n$area\n$screenshot\n$theme\n$opacity\n$media\n$overview\n$weather\n$wallpaper\n$suspend\n$shutdown\n$reboot\n$hibernate\nTime\nUptime"
+choices="$point\n$area\n$monitor\n$screenshot\n$theme\n$opacity\n$media\n$overview\n$weather\n$suspend\n$shutdown\n$reboot\n$hibernate\nTime\nUptime"
 
 selected=$(echo -e "$choices" | rofi -i -dmenu -p "Choose an action")
 
@@ -106,17 +111,18 @@ selected=$(echo -e "$choices" | rofi -i -dmenu -p "Choose an action")
 case "$selected" in
 $point) get_point ;;
 $area) get_area ;;
+$monitor) power_off_monitors ;;
 $screenshot) edit_screenshot ;;
 $theme) toggle_theme ;;
 $opacity) toggle_opacity ;;
 $media) show_media ;;
 $overview) show_overview ;;
 $weather) show_weather ;;
-$wallpaper) show_wallpaper ;;
+# $wallpaper) show_wallpaper ;;
 $suspend) suspend_sys ;;
 $shutdown) shutdown_sys ;;
 $reboot) reboot_sys ;;
-$hibernate) hibernate_sys ;;
+# $hibernate) hibernate_sys ;;
 "Time") time_now ;;
 "Uptime") uptime_info ;;
 *) exit 0 ;;
