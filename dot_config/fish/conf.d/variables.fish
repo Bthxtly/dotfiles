@@ -15,7 +15,7 @@ set -x SCREENSHOT_TOOL grim
 set -x SDL_VIDEODRIVER wayland
 
 # colorful man page
-set -x MANPAGER "bat -plman"
+set -x MANPAGER "bat -p"
 
 # set go path
 set -x GOPATH $HOME/Miscellaneous/go
