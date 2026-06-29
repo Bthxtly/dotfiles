@@ -11,7 +11,13 @@ map("n", "Q", "@q")
 map("n", "ck", "<cmd>help digraph-table<cr>")
 map("n", "<c-'>", "<c-]>", { desc = "Jump to entry" })
 map("n", "<leader>ha", "<cmd>so $VIMRUNTIME/syntax/hitest.vim<cr>", { desc = "All highlight", silent = true })
-map("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = false, desc = "cd to file path" })
+map("n", "<leader>cd", "<cmd>cd %:h<cr>", { silent = false, desc = "cd to file path" })
+
+-- fugitive shortcuts
+map("n", "<leader>gg", "<cmd>Git<cr>", { silent = false, desc = "Open git dashboard" })
+map("n", "<leader>ga", "<cmd>Git add .<cr>", { silent = false, desc = "Run git add ." })
+map("n", "<leader>g<space>", ":Git ", { silent = false, desc = "Open fugitive prompt" })
+map("n", "<leader>gm", ':Git commit -m ""<Left>', { silent = false, desc = "Prepare for git commit" })
 
 -- better search
 map("n", "<esc>", "<cmd>noh<cr>", { desc = "Disable hlsearch" })
@@ -60,6 +66,10 @@ map("i", ".", "<C-]>.", { remap = true })
 map("i", ";", "<C-]>;", { remap = true })
 map("i", ",", "<C-]>,", { remap = true })
 map("i", "<C-i>", "<C-]><C-i>", { remap = true })
+map("i", "<Up>", "<C-]><Up>", { remap = true })
+map("i", "<Down>", "<C-]><Down>", { remap = true })
+map("i", "<Left>", "<C-]><Left>", { remap = true })
+map("i", "<Right>", "<C-]><Right>", { remap = true })
 
 -- Add undo break-points
 map("i", ".", ".<c-g>u", { remap = true })
