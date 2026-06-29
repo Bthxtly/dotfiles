@@ -129,9 +129,6 @@ return {
 
       -- cmake
       vim.lsp.enable("cmake")
-
-      -- hyprland
-      vim.lsp.enable("hyprls")
     end,
   },
 }
