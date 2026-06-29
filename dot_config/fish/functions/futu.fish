@@ -1,3 +1,4 @@
+# play my favorate TV series
 function futu -d "play season $1 episode $2"
     set -l season (printf "%02d" $argv[1])
     set -l episode (printf "%02d" $argv[2])
