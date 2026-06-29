@@ -29,6 +29,7 @@ return {
       java = { "clang-format" },
       typst = { "typstyle" },
       sql = { "pg_format" },
+      json = { "jq" },
     },
     -- The options you set here will be merged with the builtin formatters.
     -- You can also define any custom formatters here.
