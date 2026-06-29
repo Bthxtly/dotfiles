@@ -28,10 +28,10 @@ pinch:
 #       command: "hyprctl keyword monitor eDP-1,preferred,auto,auto,transform,1" # rotate counterclockwise
 
 hold:
+  3:
+    command: "niri msg action center-column"  # center column
   4:
     command: "niri msg action maximize-column"  # toggle fullscreen
-  # 3:
-  #   sendkey: "RIGHTCTRL+W"      # close the browser page
 
 threshold:
   swipe: 0.8
