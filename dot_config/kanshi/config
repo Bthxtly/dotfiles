@@ -1,19 +1,34 @@
-profile dormitory {
+profile dorm {
   output eDP-1 disable
 
   output DP-1 {
     enable
-      mode 2560x1440@180.000Hz
-      scale 1.25
-      position 0,0
+    mode 2560x1440@180.000Hz
+    scale 1.25
+    position 0,0
+  }
+
+  exec brightnessctl set 160
+}
+
+profile home {
+  output eDP-1 {
+    enable
+    mode 2560x1440@240.000Hz
+    scale 1.6
+    position 0,0
   }
 }
 
-profile solo {
+profile steam {
   output eDP-1 {
     enable
-      mode 2560x1440@240.000Hz
-      scale 1.6
-      position 0,0
+    mode 2560x1440@240.000Hz
+    scale 1.6
+    position 0,0
   }
+
+  output DP-1 disable
+
+  exec brightnessctl set 1
 }
