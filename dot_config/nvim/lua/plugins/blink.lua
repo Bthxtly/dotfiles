@@ -10,7 +10,7 @@ return {
       "saghen/blink.lib",
     },
     build = function()
-      require("blink.cmp").build():wait(60000)
+      require("blink.cmp").build():pwait(60000)
     end,
     lazy = true,
     event = { "InsertEnter", "CmdlineEnter" },
@@ -20,7 +20,7 @@ return {
     opts = {
       snippets = { preset = "luasnip" },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
         per_filetype = {
           lua = { inherit_defaults = true, "lazydev" },
           -- python = { inherit_defaults = true, "minuet" },
@@ -159,7 +159,11 @@ return {
 
   {
     "saghen/blink.pairs",
-    build = "cargo build --release",
+    dependencies = "saghen/blink.lib",
+    build = function()
+      require("blink.pairs").build():pwait(60000)
+    end,
+
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config
     opts = {
