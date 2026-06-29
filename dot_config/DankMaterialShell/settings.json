@@ -295,7 +295,7 @@
   "soundVolumeChanged": false,
   "soundPluggedIn": true,
   "acMonitorTimeout": 900,
-  "acLockTimeout": 300,
+  "acLockTimeout": 900,
   "acSuspendTimeout": 1800,
   "acSuspendBehavior": 0,
   "acProfileName": "",
@@ -526,12 +526,17 @@
           "enabled": true
         },
         {
-          "id": "idleInhibitor",
-          "enabled": true
-        },
-        {
           "id": "controlCenterButton",
-          "enabled": true
+          "enabled": true,
+          "showNetworkIcon": false,
+          "showBluetoothIcon": false,
+          "showAudioIcon": false,
+          "showAudioPercent": false,
+          "showBrightnessIcon": false,
+          "showBrightnessPercent": false,
+          "showMicIcon": false,
+          "showBatteryIcon": false,
+          "showScreenSharingIcon": false
         }
       ],
       "spacing": 4,

@@ -372,6 +372,14 @@
     "description": "panic!(…);",
     "prefix": "panic"
   },
+  "pcn": {
+    "body": [
+      "pub const fn ${1:Name}($2) $3{",
+      "    $4",
+      "}$0"
+    ],
+    "prefix": "pcn"
+  },
   "penum": {
     "body": [
       "#[derive(Debug)]",
