@@ -43,10 +43,33 @@ window-rule {
 }
 //}}}
 
+// don't focus on most floating window when starting {{{
+window-rule {
+  match is-floating=true
+  // exclude title=""
+  open-focused false
+}
+// }}}
+
 // maximize falsh browser {{{
 window-rule {
   match app-id="Flash Browser"
   default-column-width { proportion 0.8; }
+}
+// }}}
+
+// maximize Minecraft {{{
+window-rule {
+  match title=r#"^Minecraft\* 1\.21\.11$"#
+  open-fullscreen true
+  open-maximized true
+}
+// }}}
+
+// maximize Steam {{{
+window-rule {
+  match app-id="steam" //title="Steam Big Picture Mode"
+  open-maximized true
 }
 // }}}
 
