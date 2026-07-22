@@ -7,7 +7,21 @@ return {
     version = "^19.0.0",
     lazy = true,
     cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionCmd", "CodeCompanionActions" },
-    opts = {},
+    opts = {
+      --Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
+      interactions = {
+        chat = {
+          adapter = {
+            name = "copilot",
+            model = "gpt-4.1",
+          },
+        },
+        inline = { adapter = {
+          name = "copilot",
+          model = "gpt-4.1",
+        } },
+      },
+    },
     dependencies = {
       { "nvim-lua/plenary.nvim", branch = "master" },
       { "zbirenbaum/copilot.lua" },
