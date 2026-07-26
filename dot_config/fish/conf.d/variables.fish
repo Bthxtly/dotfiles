@@ -10,6 +10,7 @@ fish_add_path ~/.local/bin
 fish_add_path ~/.cargo/bin
 
 set -x QT_QPA_PLATFORM wayland
+set -x QT_QPA_PLATFORMTHEME qt5ct
 set -x SDL_VIDEODRIVER wayland
 
 # colorful man page
@@ -26,3 +27,6 @@ set -x GVIM_ENABLE_WAYLAND 1
 
 # set proper Android SKD direction
 set -x ANDROID_HOME $HOME/.local/share/Android
+
+# use fzf config file
+set -x FZF_DEFAULT_OPTS_FILE $HOME/.config/fzf/fzfrc

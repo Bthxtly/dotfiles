@@ -68,7 +68,6 @@ alias 'vf=nvim ~/.config/fish/config.fish && source ~/.config/fish/config.fish'
 alias 'vfa=nvim ~/.config/fish/conf.d/alias.fish && source ~/.config/fish/conf.d/alias.fish'
 alias 'vfv=nvim ~/.config/fish/conf.d/variables.fish && source ~/.config/fish/conf.d/variables.fish'
 alias 'vimdiff=nvim -d'
-alias 'f=fd --type f | fzf | xargs -I {} nvim {}'
 alias 'his=history > /tmp/history_tmp; nvim /tmp/history_tmp'
 
 # something might be useful
