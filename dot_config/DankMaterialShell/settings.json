@@ -211,24 +211,7 @@
   "workspaceUnfocusedMonitorBorderColor": "primary",
   "workspaceUnfocusedMonitorBorderCustomColor": "#6750A4",
   "workspaceUnfocusedMonitorBorderThickness": 2,
-  "workspaceNameIcons": {
-    "browser": {
-      "type": "icon",
-      "value": "data_object"
-    },
-    "neovim": {
-      "type": "icon",
-      "value": "terminal"
-    },
-    "music": {
-      "type": "icon",
-      "value": "campaign"
-    },
-    "niri": {
-      "type": "icon",
-      "value": "laptop"
-    }
-  },
+  "workspaceNameIcons": {},
   "waveProgressEnabled": true,
   "scrollTitleEnabled": true,
   "mediaAdaptiveWidthEnabled": true,
@@ -552,7 +535,7 @@
   "lockScreenInactiveColor": "#000000",
   "lockScreenNotificationMode": 0,
   "lockScreenVideoEnabled": false,
-  "lockScreenVideoPath": "",
+  "lockScreenVideoPath": "/home/bthxtly/Videos/Archived/badApple.mp4",
   "lockScreenVideoCycling": false,
   "lockScreenWallpaperPath": "",
   "lockScreenWallpaperFillMode": "",
@@ -586,7 +569,7 @@
   "osdCapsLockEnabled": true,
   "osdPowerProfileEnabled": true,
   "osdAudioOutputEnabled": true,
-  "powerActionConfirm": true,
+  "powerActionConfirm": false,
   "powerActionHoldDuration": 0.5,
   "powerMenuActions": [
     "reboot",
@@ -662,13 +645,13 @@
           "id": "clock",
           "enabled": true,
           "clockCompactMode": false
-        },
-        {
-          "id": "weather",
-          "enabled": true
         }
       ],
       "rightWidgets": [
+        {
+          "id": "weather",
+          "enabled": true
+        },
         {
           "id": "systemTray",
           "enabled": true
@@ -689,10 +672,6 @@
           "showSwap": false
         },
         {
-          "id": "battery",
-          "enabled": true
-        },
-        {
           "id": "controlCenterButton",
           "enabled": true,
           "showNetworkIcon": false,
@@ -702,8 +681,11 @@
           "showBrightnessIcon": false,
           "showBrightnessPercent": false,
           "showMicIcon": false,
-          "showBatteryIcon": false,
-          "showScreenSharingIcon": false
+          "showBatteryIcon": true,
+          "showScreenSharingIcon": true,
+          "showIdleInhibitorIcon": true,
+          "showDoNotDisturbIcon": true,
+          "showPrinterIcon": true
         }
       ],
       "spacing": 4,
@@ -728,7 +710,10 @@
       "popupGapsAuto": true,
       "popupGapsManual": 4,
       "widgetOutlineEnabled": false,
-      "scrollXBehavior": "none"
+      "scrollXBehavior": "none",
+      "scrollYBehavior": "none",
+      "hoverPopouts": false,
+      "shadowIntensity": 0
     }
   ],
   "desktopClockEnabled": false,
