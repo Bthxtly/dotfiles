@@ -129,6 +129,9 @@ return {
 
       -- cmake
       vim.lsp.enable("cmake")
+
+      -- toml
+      vim.lsp.enable("tombi")
     end,
   },
 }
