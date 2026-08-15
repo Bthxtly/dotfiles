@@ -30,3 +30,4 @@ set -x ANDROID_HOME $HOME/.local/share/Android
 
 # use fzf config file
 set -x FZF_DEFAULT_OPTS_FILE $HOME/.config/fzf/fzfrc
+set -x FZF_CTRL_R_OPTS "--preview-window=hidden"

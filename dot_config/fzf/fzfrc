@@ -1,11 +1,8 @@
-# vim:ft=conf
-# @author nate zhou, bthxtly
-# @since 2025,2026
-
 --preview-window=wrap:border-sharp:60%:
 
 --bind=ctrl-a:first,ctrl-g:last
 --bind=ctrl-e:preview-down,ctrl-y:preview-up
+--bind=ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up
 --bind=ctrl-f:preview-page-down,ctrl-b:preview-page-up
 
 --color=16

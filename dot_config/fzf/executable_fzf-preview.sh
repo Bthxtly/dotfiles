@@ -32,10 +32,12 @@ if [[ ! $type =~ image/ ]]; then
     if [[ $type =~ =binary ]]; then
         file "$1"
         exit
+    elif [[ $type =~ text/ ]]; then
+        pygmentize -f terminal -g $file
+        exit
+    else
+        echo $file
     fi
-
-    pygmentize -f terminal -g $file
-    exit
 fi
 
 dim=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}
