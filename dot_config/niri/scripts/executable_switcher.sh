@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get the current theme
-theme=$(dms ipc theme getMode)
+theme=$(noctalia msg theme-mode-get)
 
 niri_colors=~/.config/niri/colors.kdl
 backdrop_color_line=$(awk '$1 == "backdrop-color" {print NR}' $niri_colors)
@@ -10,10 +10,12 @@ if [[ "$theme" == "light" ]]; then
   mode="1 s/light/dark/"
   spicetify_mode="10 s/dawn/moon/"
   niri_color_mode="$backdrop_color_line s/FAF4ED/232136/"
+  next_theme="dark"
 elif [[ "$theme" == "dark" ]]; then
   mode="1 s/dark/light/"
   spicetify_mode="10 s/moon/dawn/"
   niri_color_mode="$backdrop_color_line s/232136/FAF4ED/"
+  next_theme="light"
 
   # fix gtk-css issue with zathura
   gtk3_path=~/.config/gtk-3.0
@@ -35,22 +37,13 @@ sed -i "$mode" ~/.config/rofi/current_theme.rasi
 sed -i "$mode" ~/.config/zathura/current_theme.conf
 # }}}
 
-# quickshell, system, and wallpaper {{{
-dms ipc theme toggle
-# }}}
+# quickshell, system, and wallpaper
+noctalia msg theme-mode-toggle
+noctalia msg wallpaper-set $(noctalia msg wallpaper-get | sed "$mode")
+gsettings set org.gnome.desktop.interface color-scheme "prefer-$next_theme"
 
-# reload kitty {{{
-# Get the PID of the Kitty process
-kitty_pid=$(pgrep kitty)
-
-# Check if Kitty is running
-if [ -n "$kitty_pid" ]; then
-  # Send SIGUSR1 to the Kitty process
-  for p in $kitty_pid; do
-    kill -SIGUSR1 "$p" &
-  done
-fi
-# }}}
+# reload kitty
+kill -USR1 -f $(pgrep kitty) &
 
 # relaod zathrua {{{
 zathura_pid=$(pidof zathura)
@@ -66,7 +59,6 @@ nvim_sockets=$(ls /run/user/1000/nvim*)
 # Find all Neovim sockets and send the source command
 for socket in $nvim_sockets; do
   if [ -S "$socket" ]; then
-    # echo $socket
     nvim --server "$socket" --remote-send \
       '<C-\><C-N>:source $HOME/.config/nvim/current_theme.vim<CR>:<ESC>' >/dev/null &
   fi

@@ -88,6 +88,7 @@ window-rule {
 // open Spotify at `music` workspace {{{
 window-rule {
     match app-id="Spotify"
+    match app-id="spotify"
     open-on-workspace "music"
     open-maximized true
 }

@@ -116,6 +116,7 @@ binds {
 
   // My scripts
   Mod+I { spawn-sh "pkill rofi || ~/.config/niri/scripts/actions.sh"; }
+  Mod+P { spawn-sh "pkill rofi || ~/.config/niri/scripts/actions/power.sh"; }
   Mod+E { spawn-sh "~/.config/niri/scripts/dict.sh toggle"; }
   XF86Launch2 { spawn-sh "~/.config/niri/scripts/dict.sh lookup"; }
   XF86Calculator { spawn-sh "~/.config/niri/scripts/dict.sh close"; }

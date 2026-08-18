@@ -52,3 +52,8 @@ binds{
     spawn "dms" "ipc" "call" "night" "toggle";
   }
 }
+
+// Disable built in config load errors since dank shell provides this
+config-notification {
+  disable-failed
+}

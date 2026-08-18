@@ -1,0 +1,309 @@
+config_version = 13
+
+[bar.default]
+capsule = true
+capsule_opacity = 0.59999998658895493
+capsule_radius = 8
+center = [ "media", "group:g4", "weather" ]
+end = [ "group:g2", "group:g3", "group:g1", "control-center", "session" ]
+margin_edge = 2
+margin_ends = 2
+padding = 0
+position = "right"
+start = [ "launcher", "wallpaper", "workspaces", "tray" ]
+thickness = 42
+widget_spacing = 8
+
+    [bar.default.dead_zone.actions]
+    left = "panel-toggle control-center home"
+    right = "settings-open"
+    scroll_left = "volume-up 3"
+    scroll_right = "volume-down 3"
+
+    [bar.default.monitor.HDMI]
+    enabled = false
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "volume", "brightness", "battery" ]
+    opacity = 0.59999996423721313
+    padding = 6.0
+    radius = 8.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "notifications", "clipboard", "network", "bluetooth" ]
+    opacity = 0.59999996423721313
+    padding = 6.0
+    radius = 8.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g3"
+    members = [ "cpu", "ram" ]
+    opacity = 0.59999996423721313
+    padding = 6.0
+    radius = 8.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g4"
+    members = [ "date", "clock" ]
+    opacity = 0.59999996423721313
+    padding = 6.0
+    radius = 8.0
+
+[control_center.calendar]
+show_events_card = false
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[dock]
+active_monitor_only = true
+enabled = true
+launcher_position = "start"
+reserve_space = false
+show_dots = true
+smart_auto_hide = true
+
+[idle]
+behavior_order = [ "screen-off", "lock", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 1800.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 300.0
+
+[location]
+address = "Qingtian, China"
+
+[lockscreen]
+lock_before_suspend = false
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@HDMI-A-1",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000003"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "HDMI-A-1"
+    placement_height = 0.0
+    placement_width = 0.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 70.0
+    box_width = 368.0
+    cx = 800.0
+    cy = 610.0
+    output = "eDP-1"
+    placement_height = 900.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = true
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "compact"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = false
+        show_session_buttons = false
+        show_unlock_hint = false
+        show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 192.0
+    box_width = 384.0
+    cx = 800.0
+    cy = 178.0
+    output = "eDP-1"
+    placement_height = 900.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        center_text = false
+        clock_style = "digital"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 144.0
+    box_width = 352.0
+    cx = 768.0
+    cy = 426.0
+    output = "eDP-1"
+    placement_height = 900.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "media_player"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        layout = "horizontal"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+    box_height = 96.0
+    box_width = 272.0
+    cx = 952.0
+    cy = 402.0
+    output = "eDP-1"
+    placement_height = 900.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
+        background = false
+        bands = 32
+        centered = true
+        mirrored = false
+        show_when_idle = true
+
+[osd]
+offset_y = 12
+orientation = "vertical"
+position = "top_right"
+position_vertical = "center_right"
+
+[shell]
+avatar_path = "/home/bthxtly/Pictures/Profiles/profile.jpg"
+password_style = "random"
+polkit_agent = true
+screen_time_enabled = true
+telemetry_enabled = true
+
+[theme]
+builtin = "Noctalia"
+community_palette = "Rose Pine Moon Alt"
+mode = "light"
+source = "community"
+wallpaper_scheme = "m3-rainbow"
+
+[wallpaper]
+directory = "/home/bthxtly/Pictures/Wallpapers"
+transition = [ "disc" ]
+transition_duration = 700
+
+    [wallpaper.default]
+    path = "/home/bthxtly/.local/state/noctalia/wallpapers/light.png"
+
+    [wallpaper.last]
+    path = "/home/bthxtly/.local/state/noctalia/wallpapers/light.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/bthxtly/.local/state/noctalia/wallpapers/light.png"
+
+[widget.clipboard]
+enabled = false
+
+[widget.clock]
+scale = 0.94999999999999996
+
+[widget.control-center]
+enabled = false
+
+[widget.cpu]
+visualization = "none"
+
+[widget.date]
+vertical_format = "{:%m\\n%d\\n%a}"
+
+[widget.launcher]
+enabled = false
+
+[widget.media]
+hide_when_no_media = true
+scale = 1.5
+title_scroll = "on_hover"
+
+[widget.network]
+show_label = false
+
+[widget.ram]
+label_show_units = false
+visualization = "none"
+
+[widget.session]
+enabled = false
+
+[widget.volume.actions]
+scroll_down = "volume-up 3"
+scroll_up = "volume-down 3"
+
+[widget.workspaces]
+hide_when_empty = true
+scale = 1.2
+show_labels = false
