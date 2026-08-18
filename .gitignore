@@ -2,8 +2,6 @@ dot_config/fish/conf.d/key.fish
 
 dot_config/nvim/spell/**
 
-dot_config/niri/dms/**
-
 dot_config/kitty/kitty-themes-master/**
 dot_config/kitty/kitty_all.conf
 dot_config/kitty/dank-tabs.conf
