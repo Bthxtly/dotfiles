@@ -17,6 +17,7 @@ alias 'si=swayimg'
 alias 'xi=xargs -I{}'
 alias 'lo=libreoffice'
 alias 'dush=du -sh'
+alias 'kt=kdeconnect-cli'
 
 alias 'fly=cd && cd $(fd --hidden --type directory | fzf --preview "ls {}")'
 
