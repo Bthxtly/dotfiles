@@ -425,16 +425,6 @@
   "fadeToDpmsEnabled": true,
   "fadeToDpmsGracePeriod": 5,
   "launchPrefix": "",
-  "brightnessDevicePins": {},
-  "wifiNetworkPins": {
-    "preferredWifi": [
-      "4310tplink",
-      "Phone"
-    ]
-  },
-  "bluetoothDevicePins": {},
-  "audioInputDevicePins": {},
-  "audioOutputDevicePins": {},
   "gtkThemingEnabled": false,
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
@@ -622,7 +612,10 @@
       "enabled": true,
       "position": 3,
       "screenPreferences": [
-        "all"
+        {
+          "name": "eDP-1",
+          "model": "0x0B7D"
+        }
       ],
       "showOnLastDisplay": true,
       "leftWidgets": [
@@ -874,6 +867,18 @@
           "height": 180,
           "x": 0,
           "y": 0
+        },
+        "HDMI-A-1": {
+          "width": 320,
+          "height": 480,
+          "x": 520,
+          "y": 144
+        },
+        "{ NULL SCREEN }": {
+          "width": 160,
+          "height": 180,
+          "x": 0,
+          "y": 0
         }
       }
     }
@@ -918,5 +923,5 @@
   "barInsetPaddingShared": -1,
   "barInsetPaddingSyncAll": false,
   "frameBarInsetPadding": -1,
-  "configVersion": 12
+  "configVersion": 13
 }

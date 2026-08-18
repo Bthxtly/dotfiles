@@ -5,6 +5,7 @@ dot_config/kitty/private_dank-theme.conf
 dot_config/niri/dms/
 dot_config/DankMaterialShell/firefox.css
 dot_config/DankMaterialShell/plugins/
+dot_config/vifm/vifminfo.json
 
 private_dot_local/private_share/fcitx5/private_rime/build/
 private_dot_local/private_share/fcitx5/private_rime/private_cangjie5_colemak.userdb/
