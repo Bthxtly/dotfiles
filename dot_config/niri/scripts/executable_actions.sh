@@ -1,37 +1,8 @@
 #!/usr/bin/env bash
 
+script_dir="$HOME/.config/niri/scripts"
+
 # --- Define functions ---
-get_point() {
-  point=$(slurp -p -f '%x %y')
-  if [[ -z "$point" ]]; then
-    notify-send "Cancelled"
-    exit
-  fi
-
-  wl-copy $point
-  notify-send "$point" "The point is copied to clipboard"
-}
-
-get_area() {
-  area=$(slurp -f '%w:%h:%x:%y')
-  if [[ -z "$area" ]]; then
-    notify-send "Cancelled"
-    exit
-  fi
-
-  # scale the area so I can use it to crop screenshots with ffmpeg
-  scale=$(niri msg -j outputs | jq '.[].logical.scale' | grep -v null)
-
-  scaled_area=$(python -c "print(*map(lambda x: int(float(x) * $scale), '$area'.split(':')), sep=':')")
-
-  wl-copy $scaled_area
-  notify-send "$scaled_area" "The area is copied to clipboard"
-}
-
-toggle_theme() {
-  ~/.config/niri/scripts/switcher.sh
-}
-
 toggle_opacity() {
   id=$(niri msg -j focused-window | jq '.id')
   niri msg action toggle-window-rule-opacity --id "$id"
@@ -41,89 +12,34 @@ power_off_monitors() {
   niri msg action power-off-monitors
 }
 
-edit_screenshot() {
-  TMP_SCREENSHOT=/tmp/screenshot
-  niri msg action screenshot-screen --path $TMP_SCREENSHOT
-  sleep 1
-  swappy -f $TMP_SCREENSHOT
-}
-
-show_media() {
-  dms ipc call dash open media
-}
-
-show_overview() {
-  dms ipc call dash open overview
-}
-
-show_weather() {
-  dms ipc call dash open weather
-}
-
-show_wallpaper() {
-  dms ipc call dash open wallpaper
-}
-
-suspend_sys() {
-  systemctl suspend
-}
-
-shutdown_sys() {
-  shutdown now
-}
-
-reboot_sys() {
-  reboot
-}
-
-hibernate_sys() {
-  systemctl hibernate
-}
-
-time_now() {
-  notify-send "Current Time" "$(date '+%Y-%m-%d %H:%M:%S')"
-}
-
-uptime_info() {
-  notify-send "Uptime" "$(uptime -p)"
-}
-
 # --- Menu via rofi ---
-point='Get point position'
-area='Get area position'
-monitor='Turn off monitors'
-screenshot='Edit screenshot'
-media='Show current media'
-overview='Show overview'
-weather='Show weather'
-wallpaper='Show wallpaper'
-suspend='Suspend'
-shutdown='Shutdown'
-reboot='Reboot'
-hibernate='Hibernate'
-theme='Toggle light/dark theme'
-opacity='Toggle focused windows opacity'
-choices="$point\n$area\n$monitor\n$screenshot\n$theme\n$opacity\n$media\n$overview\n$weather\n$suspend\n$shutdown\n$reboot\n$hibernate\nTime\nUptime"
+selections=(
+  'Turn_off_monitors'
+  'Reboot'
+  'Reboot_to_Windows_10'
+  'Toggle_focused_windows_opacity'
+  'Toggle_light/dark_theme'
+  'Power'
+  'DMS_show'
+  'Misc'
+)
+
+choices=""
+for i in ${selections[*]}; do
+  choices="$choices$i\n"
+done
 
 selected=$(echo -e "$choices" | rofi -i -dmenu -p "Choose an action")
 
 # --- Execute selected function ---
 case "$selected" in
-$point) get_point ;;
-$area) get_area ;;
-$monitor) power_off_monitors ;;
-$screenshot) edit_screenshot ;;
-$theme) toggle_theme ;;
-$opacity) toggle_opacity ;;
-$media) show_media ;;
-$overview) show_overview ;;
-$weather) show_weather ;;
-# $wallpaper) show_wallpaper ;;
-$suspend) suspend_sys ;;
-$shutdown) shutdown_sys ;;
-$reboot) reboot_sys ;;
-# $hibernate) hibernate_sys ;;
-"Time") time_now ;;
-"Uptime") uptime_info ;;
+${selections[0]}) power_off_monitors ;;
+${selections[1]}) systemctl reboot ;;
+${selections[2]}) systemctl reboot --boot-loader-entry windows10.conf ;;
+${selections[3]}) toggle_opacity ;;
+${selections[4]}) $script_dir/switcher.sh ;;
+${selections[5]}) $script_dir/actions/power.sh ;;
+${selections[6]}) $script_dir/actions/dms.sh ;;
+${selections[7]}) $script_dir/actions/misc.sh ;;
 *) exit 0 ;;
 esac
