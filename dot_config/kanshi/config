@@ -8,6 +8,8 @@ profile dorm {
     position 0,0
   }
 
+  output HDMI-A-1 disable
+
   exec brightnessctl set 160
 }
 
@@ -16,19 +18,12 @@ profile home {
     enable
     mode 2560x1440@240.000Hz
     scale 1.6
-    position 0,0
-  }
-}
-
-profile steam {
-  output eDP-1 {
-    enable
-    mode 2560x1440@240.000Hz
-    scale 1.6
-    position 0,0
+    position 1920,0
   }
 
-  output DP-1 disable
-
-  exec brightnessctl set 1
+  output HDMI-A-1 {
+    disable
+    mode 1920x1080@60.000Hz
+    position 0,0
+  }
 }
