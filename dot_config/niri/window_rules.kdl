@@ -49,6 +49,11 @@ window-rule {
   // exclude title=""
   open-focused false
 }
+
+window-rule {
+  match title="Sign in to Steam"
+  open-focused false
+}
 // }}}
 
 // maximize falsh browser {{{

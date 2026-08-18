@@ -1,0 +1,54 @@
+spawn-at-startup "dms" "run"
+spawn-at-startup "dms" "ipc" "call" "lock" "lock";
+
+binds{
+  Mod+Ctrl+V hotkey-overlay-title="Clipboard Manager" {
+    spawn "dms" "ipc" "call" "clipboard" "toggle";
+  }
+  Mod+M hotkey-overlay-title="Task Manager" {
+    spawn "dms" "ipc" "call" "processlist" "toggle";
+  }
+  Mod+N hotkey-overlay-title="Notification Center" {
+    spawn "dms" "ipc" "call" "notifications" "toggle";
+  }
+  Mod+Shift+M hotkey-overlay-title="Settings" {
+    spawn "dms" "ipc" "call" "settings" "toggle";
+  }
+  Mod+Shift+L hotkey-overlay-title="Lock Screen" {
+    spawn "dms" "ipc" "call" "lock" "lock";
+  }
+  Mod+Shift+C hotkey-overlay-title="Control Center" {
+    spawn "dms" "ipc" "call" "control-center" "toggle";
+  }
+  XF86AudioPrev allow-when-locked=true{
+    spawn "dms" "ipc" "call" "mpris" "previous"
+  }
+  XF86AudioNext allow-when-locked=true{
+    spawn "dms" "ipc" "call" "mpris" "next"
+  }
+  XF86AudioPlay allow-when-locked=true{
+    spawn "dms" "ipc" "call" "mpris" "playPause"
+  }
+  XF86AudioRaiseVolume allow-when-locked=true {
+    spawn "dms" "ipc" "call" "audio" "increment" "5";
+  }
+  XF86AudioLowerVolume allow-when-locked=true {
+    spawn "dms" "ipc" "call" "audio" "decrement" "5";
+  }
+  XF86AudioMute allow-when-locked=true {
+    spawn "dms" "ipc" "call" "audio" "mute";
+  }
+  XF86AudioMicMute allow-when-locked=true {
+    spawn "dms" "ipc" "call" "audio" "micmute";
+  }
+  XF86MonBrightnessUp allow-when-locked=true {
+    spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
+  }
+  XF86MonBrightnessDown allow-when-locked=true {
+    spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
+  }
+  // Night mode toggle
+  Mod+Shift+N allow-when-locked=true {
+    spawn "dms" "ipc" "call" "night" "toggle";
+  }
+}
