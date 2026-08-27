@@ -1,29 +1,40 @@
+output DP-1 {
+  mode 2560x1440@180.000Hz
+  scale 1.25
+  position 0,0
+  alias $EXT
+}
+
+output eDP-1 {
+  mode 2560x1440@240.000Hz
+  scale 1.6
+  adaptive_sync on
+  position 1920,0
+  alias $INT
+}
+
+output HDMI-A-1 {
+  mode 1920x1080@60.000Hz
+  position 0,0
+  alias $VIR
+}
+
 profile dorm {
-  output eDP-1 disable
+  output $INT disable
+  output $EXT enable
+  output $VIR disable
+}
 
-  output DP-1 {
-    enable
-    mode 2560x1440@180.000Hz
-    scale 1.25
-    position 0,0
-  }
-
-  output HDMI-A-1 disable
-
-  exec brightnessctl set 160
+profile dorm {
+  output $INT disable
+  output $EXT enable
 }
 
 profile home {
-  output eDP-1 {
-    enable
-    mode 2560x1440@240.000Hz
-    scale 1.6
-    position 1920,0
-  }
+  output $INT enable
+  output $VIR disable
+}
 
-  output HDMI-A-1 {
-    disable
-    mode 1920x1080@60.000Hz
-    position 0,0
-  }
+profile home {
+  output $INT enable
 }
