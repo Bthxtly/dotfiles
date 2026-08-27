@@ -3,7 +3,7 @@ include "window_rules.kdl"
 include "binds.kdl"
 
 // Shell Integration
-include "noctalia.kdl"
+include "noctaliaV.kdl"
 
 // Start up {{{
 spawn-sh-at-startup "kmonad ~/.config/kmonad/config.kbd"
