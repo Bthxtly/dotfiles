@@ -110,7 +110,14 @@ function fish_right_prompt
         end
     end
 
-    string join '' -- $repo_info " " (set_color --bold blue) (date +%T)
+    set -l duration "$cmd_duration$CMD_DURATION"
+    if test $duration -gt 100
+        set duration (math $duration / 1000)s
+    else
+        set duration
+    end
+
+    string join '' -- $repo_info " " $cyan $duration " " (set_color --bold blue) (date +%T)
 end
 
 # function fish_prompt --description 'Write out the prompt'
