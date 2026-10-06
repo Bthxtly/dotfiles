@@ -1,26 +1,24 @@
-vim.api.nvim_create_user_command("ConformDisable", function(args)
-  if args.bang then
-    -- FormatDisable! will disable formatting just for this buffer
-    vim.b.disable_autoformat = true
-  else
-    vim.g.disable_autoformat = true
-  end
-end, {
-  desc = "Disable autoformat-on-save",
-  bang = true,
-})
-vim.api.nvim_create_user_command("ConformEnable", function()
-  vim.b.disable_autoformat = false
-  vim.g.disable_autoformat = false
-end, {
-  desc = "Re-enable autoformat-on-save",
-})
-
 return {
   "stevearc/conform.nvim",
   lazy = true,
   event = { "BufWritePre" },
-  cmd = { "ConformInfo", "ConformEnable", "ConformDisable" },
+  cmd = { "ConformInfo" },
+  keys = {
+    {
+      "<leader>cF",
+      function()
+        vim.g.disable_autoformat = not vim.g.disable_autoformat
+      end,
+      desc = "Toggle global auto format",
+    },
+    {
+      "<leader>cf",
+      function()
+        vim.b.disable_autoformat = not vim.b.disable_autoformat
+      end,
+      desc = "Toggle buffer auto format",
+    },
+  },
   opts = {
     default_format_opts = {
       timeout_ms = 3000,
