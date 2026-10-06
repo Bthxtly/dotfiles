@@ -6,9 +6,15 @@ function f
         return
     end
 
-    if file --brief --dereference --mime -- "$file" | rg -q '^text/'
+    set -l mime $(file --brief --dereference --mime -- "$file")
+
+    if echo $mime | rg -q '^text/'
         nvim $file
     else
-        xdg-open $file
+        if echo $mime | rg -q '^image/'
+            imv $file
+        else
+            xdg-open $file
+        end
     end
 end
