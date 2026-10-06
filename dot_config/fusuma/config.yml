@@ -4,9 +4,6 @@ swipe:
       sendkey: "VOLUMEUP"         # volume up
     left:
       sendkey: "VOLUMEDOWN"       # volume down
-    down:
-      # sendkey: "GRAVE"            # Escape
-      sendkey: "RIGHTCTRL+W"      # close the browser page
 
 pinch:
   4:
@@ -14,18 +11,6 @@ pinch:
       sendkey: "RIGHTCTRL+MINUS"  # zoom in the browser page
     out:
       sendkey: "RIGHTCTRL+EQUAL"  # zoom out the browser page
-
-# rotate:
-#   3:
-#     clockwise:
-#       command: "hyprctl keyword monitor eDP-1,preferred,auto,auto,transform,0" # rotate vertical
-#     counterclockwise:
-#       command: "hyprctl keyword monitor eDP-1,preferred,auto,auto,transform,0" # rotate vertical
-#   4:
-#     clockwise:
-#       command: "hyprctl keyword monitor eDP-1,preferred,auto,auto,transform,3" # rotate clockwise
-#     counterclockwise:
-#       command: "hyprctl keyword monitor eDP-1,preferred,auto,auto,transform,1" # rotate counterclockwise
 
 hold:
   3:
@@ -38,6 +23,23 @@ threshold:
   pinch: 0.5
   rotate: 0.5
   hold: 0.3
+
+---
+context:
+  application: zen-browser
+swipe:
+  4:
+    down:
+      sendkey: "RIGHTCTRL+W"      # close the browser page
+
+---
+context:
+  application: kitty
+swipe:
+  4:
+    down:
+      sendkey: "RIGHTCTRL+D"      # close the kitty window
+
 
 # swipe:
 #
