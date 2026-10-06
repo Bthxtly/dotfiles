@@ -231,9 +231,9 @@ filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 
 " Images
-filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-        \ {View in swayimg}
-        \ swayimg %c,
+filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.svg},<image/*>
+        \ {View in imv}
+        \ imv %c,
         " \ {View in feh}
         " \ feh %c,
         " \ {View in sxiv}
@@ -242,7 +242,7 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         " \ gpicview %c,
         " \ {View in shotwell}
         " \ shotwell,
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.webp
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.webp,*.svg
     \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
     \ %pc
     \ kitten icat --clear --silent >/dev/tty </dev/tty %N
