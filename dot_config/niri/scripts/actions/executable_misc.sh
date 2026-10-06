@@ -8,8 +8,13 @@ get_point() {
     exit
   fi
 
-  wl-copy $point
-  notify-send "$point" "The point is copied to clipboard"
+  # scale the area so I can use it with xdotool
+  scale=$(niri msg -j outputs | jq '.[].logical.scale' | grep -v null)
+
+  scaled_point=$(python -c "print(*map(lambda x: int(float(x) * $scale), '$point'.split(' ')), sep=' ')")
+
+  wl-copy $scaled_point
+  notify-send "$scaled_point" "The point is copied to clipboard"
 }
 
 get_area() {
@@ -29,16 +34,25 @@ get_area() {
 }
 
 edit_screenshot() {
-  TMP_SCREENSHOT=/tmp/screenshot
-  niri msg action screenshot-screen --path $TMP_SCREENSHOT
-  sleep 1
-  swappy -f $TMP_SCREENSHOT
+  region=$(slurp)
+  if [[ -z "$region" ]]; then
+    grim - | satty -f -
+  else
+    grim -g "$(slurp)" - | satty -f -
+  fi
+}
+
+scan_qrcode() {
+  info=$(grim -g "$(slurp)" - | qrtool decode -)
+  notify-send "QR code info" "$info"
+  echo $info | wl-copy
 }
 
 selections=(
   'Get_point_position'
   'Get_area_position'
   'Edit_screenshot'
+  'Scan_QRcode'
 )
 
 choices=""
@@ -52,5 +66,6 @@ case "$selected" in
 ${selections[0]}) get_point ;;
 ${selections[1]}) get_area ;;
 ${selections[2]}) edit_screenshot ;;
+${selections[3]}) scan_qrcode ;;
 *) exit 0 ;;
 esac
