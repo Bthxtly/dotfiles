@@ -1,3 +1,5 @@
+// https://niri-wm.github.io/niri/Configuration%3A-Key-Bindings.html
+
 binds {
   // shows a list of important hotkeys.
   Mod+Shift+Slash { show-hotkey-overlay; }
@@ -12,11 +14,11 @@ binds {
 
   Mod+C repeat=false { close-window; }
 
-  Mod+Left  { focus-column-left; }
-  Mod+Right { focus-column-right; }
+  Mod+Left  { focus-column-or-monitor-left; }
+  Mod+Right { focus-column-or-monitor-right; }
 
-  Mod+Shift+Left  { move-column-left; }
-  Mod+Shift+Right { move-column-right; }
+  Mod+Shift+Left  { move-column-left-or-to-monitor-left; }
+  Mod+Shift+Right { move-column-right-or-to-monitor-right; }
 
   // Move across workspaces when reaching the first or last window in a column
   Mod+Down      { focus-window-or-workspace-down; }
@@ -26,8 +28,8 @@ binds {
 
   // Touchpad scrolling is continuous, so for these binds it is split into
   // discrete intervals.
-  Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
-  Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
+  Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+"; }
+  Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-"; }
 
   Mod+1 { focus-workspace 1; }
   Mod+2 { focus-workspace 2; }
@@ -116,7 +118,8 @@ binds {
 
   // My scripts
   Mod+I { spawn-sh "pkill rofi || ~/.config/niri/scripts/actions.sh"; }
-  Mod+P { spawn-sh "pkill rofi || ~/.config/niri/scripts/actions/power.sh"; }
+  Mod+Shift+I { spawn-sh "pkill rofi || ~/.config/niri/scripts/actions/misc.sh"; }
+  Mod+P { spawn-sh "~/.config/niri/scripts/niri-pull-pip"; }
   Mod+E { spawn-sh "~/.config/niri/scripts/dict.sh toggle"; }
   XF86Launch2 { spawn-sh "~/.config/niri/scripts/dict.sh lookup"; }
   XF86Calculator { spawn-sh "~/.config/niri/scripts/dict.sh close"; }
@@ -125,5 +128,8 @@ binds {
   // Mouse
   MouseForward { focus-column-left; }
   MouseBack    { focus-column-right; }
+
+  Mod+WheelScrollUp { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+"; }
+  Mod+WheelScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-"; }
 }
 
