@@ -23,3 +23,7 @@ vim.cmd("iabbr ;; ::")
 vim.cmd("iabbr M> ->")
 
 vim.keymap.set("n", "<leader>rr", "<cmd>RustTest<cr>")
+
+-- select a variable and add `dbg!(&var);` below
+vim.keymap.set("n", "<leader>rd", "odbg!(&);<esc>hhp")
+vim.keymap.set("x", "<leader>rd", "yodbg!(&);<esc>hhp")
