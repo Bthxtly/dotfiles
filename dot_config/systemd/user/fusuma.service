@@ -1,0 +1,16 @@
+[Unit]
+Description=Fusuma (multitouch gesture recognizer)
+Documentation=https://github.com/iberianpig/fusuma
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/bthxtly/.local/share/gem/ruby/3.4.0/bin/fusuma
+Restart=on-failure
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=graphical-session.target

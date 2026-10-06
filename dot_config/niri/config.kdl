@@ -9,7 +9,6 @@ include "noctaliaV.kdl"
 spawn-sh-at-startup "kmonad ~/.config/kmonad/config.kbd"
 spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-sh-at-startup "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
-spawn-sh-at-startup "fusuma -d"
 spawn-sh-at-startup "nvim +q"
 spawn-at-startup "zen"
 spawn-at-startup "kanshi"
@@ -152,6 +151,5 @@ workspace "neovim"
 workspace "browser"
 workspace "music"
 //}}}
-
 
 // vim:fdm=marker:fdl=0
