@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# niri-float-follow: keep any floating windows on the focused workspace.
+#
+# Listens to niri's JSON event stream and moves the matched window to whatever
+# workspace you switch to. No polling, no CPU when idle.
+
+set -u
+pip_id=""
+pip_ws=""
+
+while IFS= read -r line; do
+  case "$line" in
+  # find the floating window at startup
+  *WindowsChanged*)
+    pip_id=$(echo "$line" | jq -r '.WindowsChanged.windows[] | select(.is_floating) | .id')
+    pip_ws=$(echo "$line" | jq -r '.WindowsChanged.windows[] | select(.is_floating) | .workspace_id')
+    ;;
+  # find the floating window while the script is running
+  *WindowOpenOrChanged*)
+    pip_id=$(echo "$line" | jq -r '.WindowOpenOrChanged.window | select(.is_floating) | .id')
+    pip_ws=$(echo "$line" | jq -r '.WindowOpenOrChanged.window | select(.is_floating) | .workspace_id')
+    ;;
+  # get current workspace if changed
+  *WorkspaceActivated*)
+    new_ws=$(echo "$line" | jq -r '.WorkspaceActivated.id')
+    [ -z "$new_ws" ] && continue
+    [ -z "$pip_id" ] && continue
+    [ "$pip_ws" = "$new_ws" ] && continue
+    echo "niri-pip-follow: moving $pip_id to workspace $new_ws" >&2
+    niri msg action move-window-to-workspace "$new_ws" --window-id "$pip_id" --focus false
+    pip_ws="$new_ws"
+    ;;
+  esac
+done < <(niri msg -j event-stream)

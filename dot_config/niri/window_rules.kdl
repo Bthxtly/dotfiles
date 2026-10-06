@@ -1,13 +1,12 @@
 // https://yalter.github.io/niri/Configuration:-Window-Rules
 
-// enable rounded corners for all windows. {{{
+// enable rounded corners for all windows.
 window-rule {
   geometry-corner-radius 10
   clip-to-geometry true
 }
-// }}}
 
-// set transparency {{{
+// set transparency
 window-rule {
   match app-id="kitty" is-focused=true
   match app-id="neovide" is-focused=true
@@ -31,9 +30,8 @@ window-rule {
     blur true
   }
 }
-// }}}
 
-// blur zen {{{
+// blur zen
 window-rule {
   match app-id="zen-browser"
 
@@ -41,79 +39,55 @@ window-rule {
     blur true
   }
 }
-//}}}
 
-// don't focus on most floating window when starting {{{
-window-rule {
-  match is-floating=true
-  // exclude title=""
-  open-focused false
-}
-
-window-rule {
-  match title="Sign in to Steam"
-  open-focused false
-}
-// }}}
-
-// maximize falsh browser {{{
+// maximize falsh browser
 window-rule {
   match app-id="Flash Browser"
-  default-column-width { proportion 0.9; }
+  default-column-width { proportion 0.7; }
 }
-// }}}
 
-// maximize Minecraft {{{
+// maximize Minecraft
 window-rule {
   match title=r#"^Minecraft\* 1\.21\.11$"#
   open-fullscreen true
   open-maximized true
 }
-// }}}
 
-// maximize Steam {{{
+// maximize Steam
 window-rule {
   match app-id="steam" //title="Steam Big Picture Mode"
   open-maximized true
 }
-// }}}
 
-// open Zen at `browser` workspace {{{
+// open Zen at `browser` workspace
 window-rule {
     match at-startup=true app-id="zen-browser"
     open-on-workspace "browser"
 }
-// }}}
 
-// open Spotify at `music` workspace {{{
+// open Spotify at `music` workspace
 window-rule {
     match app-id="Spotify"
     match app-id="spotify"
     open-on-workspace "music"
     open-maximized true
 }
-// }}}
 
-// open the Spotify lyrics as floating by default, and {{{
-// put it at a comfortable place
+// make goldendict float
 window-rule {
-  match app-id=r#""# title="^Picture in picture$"
-  open-floating true
-
-  default-column-width { fixed 300; }
-  default-window-height { fixed 225; }
-
-  default-floating-position x=1240 y=628
-}
-// }}}
-
-// make goldendict float {{{
-window-rule{
   match app-id=r#"^io.github.xiaoyifang.goldendict_ng$"#
   open-floating true
 
-  default-window-height { fixed 600; }
+  default-window-height { proportion 0.6; }
+  default-column-width { proportion 0.5; }
 }
-//}}}
 
-// vim:fdm=marker:fdl=0
+// float and size the PIP window
+// https://gist.github.com/bkuri/8e017748546c8a812fb8161ade87d440
+window-rule {
+    match app-id="zen-browser" title="^Picture-in-Picture$"
+    open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 270; }
+    default-floating-position x=32 y=32 relative-to="bottom-left"
+}

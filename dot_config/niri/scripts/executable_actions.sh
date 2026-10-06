@@ -8,10 +8,6 @@ toggle_opacity() {
   niri msg action toggle-window-rule-opacity --id "$id"
 }
 
-power_off_monitors() {
-  niri msg action power-off-monitors
-}
-
 # --- Menu via rofi ---
 selections=(
   'Turn_off_monitors'
@@ -33,7 +29,7 @@ selected=$(echo -e "$choices" | rofi -i -dmenu -p "Choose an action")
 
 # --- Execute selected function ---
 case "$selected" in
-${selections[0]}) power_off_monitors ;;
+${selections[0]}) niri msg action power-off-monitors ;;
 ${selections[1]}) systemctl reboot ;;
 ${selections[2]}) systemctl reboot --boot-loader-entry windows10.conf ;;
 ${selections[3]}) toggle_opacity ;;
