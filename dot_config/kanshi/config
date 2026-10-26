@@ -9,7 +9,7 @@ output eDP-1 {
   mode 2560x1440@240.000Hz
   scale 1.6
   adaptive_sync on
-  position 1920,0
+  position 0,0
   alias $INT
 }
 
