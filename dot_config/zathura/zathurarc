@@ -13,6 +13,9 @@ map b scroll full-up
 map E zoom in
 map Y zoom out
 
+# toggle status bar with <C-g>
+map <C-g> toggle_statusbar
+
 # enable copy to clipboard
 set selection-clipboard clipboard
 
@@ -22,25 +25,24 @@ set adjust-open 'best-fit'
 # One page per row by default
 set pages-per-row 1
 
-#stop at page boundries
+# stop at page boundries
 set scroll-page-aware "true"
 # set smooth-scroll "true"
 set scroll-full-overlap 0.01
 set scroll-step 50
 
-#zoom settings
+# zoom settings
 set zoom-min 10
 set guioptions ""
 
 set render-loading "false"
 set scroll-step 50
 
-
 # color configure
 include current_theme.conf
 
-set recolor                     true
-set recolor-keephue             true
-set render-loading              true
+set recolor true
+set recolor-keephue true
+set render-loading true
 
 set window-title-home-tilde true
