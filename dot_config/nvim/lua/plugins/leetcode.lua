@@ -9,7 +9,7 @@ return {
   opts = {
     arg = "leetcode.nvim",
 
-    lang = "python",
+    lang = "rust",
 
     storage = {
       -- home = "/home/bthxtly/Program/LeetCode/",

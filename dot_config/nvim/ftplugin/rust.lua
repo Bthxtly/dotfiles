@@ -19,10 +19,11 @@ for ab, type in pairs(abbr) do
   vim.cmd("iabbr " .. ab .. " " .. type)
 end
 
-vim.cmd("iabbr ;; ::")
 vim.cmd("iabbr M> ->")
 
-vim.keymap.set("n", "<leader>rr", "<cmd>RustTest<cr>")
+-- ":Rust*" shortcuts
+vim.keymap.set("n", "<leader>rt", "<cmd>RustTest<cr>")
+vim.keymap.set("n", "<leader>rr", "<cmd>RustRun<cr>")
 
 -- select a variable and add `dbg!(&var);` below
 vim.keymap.set("n", "<leader>rd", "odbg!(&);<esc>hhp")
