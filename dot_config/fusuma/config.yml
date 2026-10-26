@@ -34,11 +34,16 @@ swipe:
 
 ---
 context:
-  application: kitty
+  application:
+    - kitty
+    - spotify
+    - org.pwmt.zathura
+    - org.prismlauncher.PrismLauncher
+    - org.kde.krita
 swipe:
   4:
     down:
-      sendkey: "RIGHTCTRL+D"      # close the kitty window
+      command: "niri msg action close-window" # close window for othe App's
 
 
 # swipe:
