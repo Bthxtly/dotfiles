@@ -198,20 +198,23 @@ fileviewer {*.flac},<audio/flac> soxi
 filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
           \*.as[fx]},
-         \<video/*>
-        \ {View using mpv}
-        \ mpv %f,
-        \ {View using ffplay}
-        \ ffplay -fs -autoexit %f,
-        " \ {View using Dragon}
-        " \ dragon %f:p,
-        " \ {View using mplayer}
-        " \ vlc %f
-fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-           \*.as[fx]},
           \<video/*>
-         \ ffprobe -pretty %c 2>&1
+          \ {View using mpv}
+          \ mpv %f,
+          \ {View using ffplay}
+          \ ffplay -fs -autoexit %f,
+          " \ {View using Dragon}
+          " \ dragon %f:p,
+          " \ {View using mplayer}
+          " \ vlc %f
+fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+            \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+            \*.as[fx]},
+            \<video/*>
+            \ ffmpegthumbnailer -i %c -s 256 -c jpeg -o "/tmp/thumbnail_%c.jpeg" >/dev/null &&
+            \ kitty +icat --transfer-mode=file --silent --scale-up --place=%pwx%ph@%pxx%py "/tmp/thumbnail_%c.jpeg" >/dev/tty </dev/tty %N %pc
+            \ kitty +icat --clear >/dev/tty </dev/tty %N
+            " \ ffprobe -pretty %c 2>&1
 
 " Web
 filextype {*.html,*.htm},<text/html>
