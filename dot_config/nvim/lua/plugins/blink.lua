@@ -85,6 +85,8 @@ return {
       keymap = {
         ["<C-y>"] = { "accept", "fallback" },
         ["<C-k>"] = { "fallback" }, -- disable <c-k> in insert mode
+        ["<C-,>"] = { "scroll_documentation_up" },
+        ["<C-.>"] = { "scroll_documentation_down" },
         -- ["<C-a>"] = require("minuet").make_blink_map(),
         ["<CR>"] = {},
         ["<Up>"] = {},
