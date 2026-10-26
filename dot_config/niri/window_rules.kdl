@@ -82,6 +82,15 @@ window-rule {
   default-column-width { proportion 0.5; }
 }
 
+// make kitty widget window float
+window-rule {
+  match app-id="kitty-widget"
+  open-floating true
+
+  default-window-height { proportion 0.6; }
+  default-column-width { proportion 0.5; }
+}
+
 // float and size the PIP window
 // https://gist.github.com/bkuri/8e017748546c8a812fb8161ade87d440
 window-rule {

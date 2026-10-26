@@ -116,6 +116,9 @@ binds {
   // moving the mouse or pressing any other key.
   Mod+Shift+P { power-off-monitors; }
 
+  // Open dashboard
+  Mod+Shift+M { spawn-sh "kitty --app-id kitty-widget btm -b"; }
+
   // My scripts
   Mod+I { spawn-sh "pkill rofi || ~/.config/niri/scripts/actions.sh"; }
   Mod+Shift+I { spawn-sh "pkill rofi || ~/.config/niri/scripts/actions/misc.sh"; }
