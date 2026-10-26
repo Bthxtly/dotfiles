@@ -1,4 +1,4 @@
-config_version = 14
+config_version = 15
 
 [audio]
 enable_sounds = true
@@ -21,8 +21,8 @@ widget_spacing = 8
     [bar.default.dead_zone.actions]
     left = "panel-toggle control-center home"
     right = "settings-open"
-    scroll_left = "volume-up 3"
-    scroll_right = "volume-down 3"
+    scroll_left = "volume-up 1"
+    scroll_right = "volume-down 1"
 
     [[bar.default.capsule_group]]
     accordion = false
@@ -79,6 +79,9 @@ widget_spacing = 8
     padding = 6.0
     radius = 8.0
 
+[brightness]
+enable_ddcutil = true
+
 [calendar]
 
 [control_center.calendar]
@@ -128,6 +131,9 @@ behavior_order = [ "screen-off", "lock", "lock-and-suspend" ]
 [location]
 auto_locate = true
 
+[lockscreen]
+transition = []
+
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
@@ -171,6 +177,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
@@ -198,6 +205,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
@@ -225,6 +233,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
@@ -252,6 +261,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = false
+        show_password_reveal = true
         show_session_buttons = false
         show_unlock_hint = false
         show_weather = true
@@ -279,6 +289,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
@@ -411,9 +422,6 @@ visualization = "none"
 [widget.date]
 vertical_format = "{:%a\\n%m\\n%d}"
 
-[widget.launcher]
-enabled = false
-
 [widget.media]
 hide_when_no_media = true
 scale = 1.5
@@ -424,7 +432,9 @@ show_label = false
 
 [widget.ram]
 label_show_units = false
-visualization = "none"
+
+    [widget.ram.actions]
+    right = "exec kitty --app-id kitty-widget btm -b"
 
 [widget.session]
 enabled = false
